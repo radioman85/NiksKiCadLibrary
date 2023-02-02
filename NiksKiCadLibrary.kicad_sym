@@ -579,7 +579,7 @@
     (property "Value" "RPi-Pico" (id 1) (at 15.24 1.27 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "RPi_Pico:RPi_Pico_SMD_TH" (id 2) (at 15.24 -15.24 90)
+    (property "Footprint" "NiksKiCadLibrary:RPi_Pico_SMD_TH" (id 2) (at 15.24 -15.24 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (id 3) (at 25.4 -39.37 0)
