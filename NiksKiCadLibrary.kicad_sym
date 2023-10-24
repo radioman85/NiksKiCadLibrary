@@ -2205,6 +2205,17 @@
         (stroke (width 0.5) (type default))
         (fill (type none))
       )
+      (polyline
+        (pts
+          (xy 1.778 1.27)
+          (xy 3.556 1.27)
+          (xy 3.048 1.524)
+          (xy 3.556 1.27)
+          (xy 3.048 1.016)
+        )
+        (stroke (width 0) (type default))
+        (fill (type none))
+      )
       (circle (center 1.27 0) (radius 0.4603)
         (stroke (width 0) (type default))
         (fill (type outline))
