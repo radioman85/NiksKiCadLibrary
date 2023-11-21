@@ -1539,7 +1539,7 @@
         (name "NC_2" (effects (font (size 1.27 1.27))))
         (number "F1" (effects (font (size 1.27 1.27))))
       )
-      (pin passive line (at 23.114 -17.78 90) (length 5.08)
+      (pin passive line (at 22.86 -17.78 90) (length 5.08)
         (name "MP1" (effects (font (size 1.27 1.27))))
         (number "MP1" (effects (font (size 1.27 1.27))))
       )
