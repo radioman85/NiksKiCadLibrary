@@ -4617,7 +4617,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(property "Reference" "U"
-			(at 20.32 10.16 0)
+			(at 20.32 8.89 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -4625,7 +4625,7 @@
 			)
 		)
 		(property "Value" "NL17SZ74USG"
-			(at 20.32 7.62 0)
+			(at 20.32 6.35 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -4633,7 +4633,7 @@
 			)
 		)
 		(property "Footprint" "NiksLibrary:VFSOP8_2P1X2P4_ONS"
-			(at 0 0 0)
+			(at 15.24 14.224 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4643,7 +4643,7 @@
 			)
 		)
 		(property "Datasheet" "NL17SZ74USG"
-			(at 0 0 0)
+			(at 5.588 12.192 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4653,12 +4653,20 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 0)
+			(at 0 -1.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
+			)
+		)
+		(property "ki_locked" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(property "ki_keywords" "NL17SZ74USG"
@@ -4679,57 +4687,20 @@
 				(hide yes)
 			)
 		)
-		(symbol "NL17SZ74USG_0_1"
-			(polyline
-				(pts
-					(xy 7.62 -12.7) (xy 33.02 -12.7)
-				)
+		(symbol "NL17SZ74USG_1_1"
+			(rectangle
+				(start 7.62 2.54)
+				(end 33.02 -17.78)
 				(stroke
-					(width 0.127)
+					(width 0)
 					(type default)
 				)
 				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 7.62 5.08) (xy 7.62 -12.7)
-				)
-				(stroke
-					(width 0.127)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 33.02 -12.7) (xy 33.02 5.08)
-				)
-				(stroke
-					(width 0.127)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 33.02 5.08) (xy 7.62 5.08)
-				)
-				(stroke
-					(width 0.127)
-					(type default)
-				)
-				(fill
-					(type none)
+					(type background)
 				)
 			)
 			(pin unspecified line
-				(at 0 0 0)
+				(at 0 -5.08 0)
 				(length 7.62)
 				(name "CP"
 					(effects
@@ -4747,7 +4718,7 @@
 				)
 			)
 			(pin unspecified line
-				(at 0 -2.54 0)
+				(at 0 0 0)
 				(length 7.62)
 				(name "D"
 					(effects
@@ -4765,7 +4736,7 @@
 				)
 			)
 			(pin unspecified line
-				(at 0 -5.08 0)
+				(at 40.64 -11.43 180)
 				(length 7.62)
 				(name "*Q"
 					(effects
@@ -4782,26 +4753,8 @@
 					)
 				)
 			)
-			(pin power_in line
-				(at 0 -7.62 0)
-				(length 7.62)
-				(name "GND"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "4"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
 			(pin unspecified line
-				(at 40.64 -7.62 180)
+				(at 40.64 -3.81 180)
 				(length 7.62)
 				(name "Q"
 					(effects
@@ -4819,7 +4772,7 @@
 				)
 			)
 			(pin unspecified line
-				(at 40.64 -5.08 180)
+				(at 0 -10.16 0)
 				(length 7.62)
 				(name "*CLR"
 					(effects
@@ -4837,7 +4790,7 @@
 				)
 			)
 			(pin unspecified line
-				(at 40.64 -2.54 180)
+				(at 0 -15.24 0)
 				(length 7.62)
 				(name "*PR"
 					(effects
@@ -4854,8 +4807,39 @@
 					)
 				)
 			)
+		)
+		(symbol "NL17SZ74USG_2_1"
+			(rectangle
+				(start 7.62 2.54)
+				(end 33.02 -2.54)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
 			(pin power_in line
 				(at 40.64 0 180)
+				(length 7.62)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 0 0)
 				(length 7.62)
 				(name "VCC"
 					(effects
