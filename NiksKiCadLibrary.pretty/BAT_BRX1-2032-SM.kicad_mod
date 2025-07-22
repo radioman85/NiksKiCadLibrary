@@ -358,4 +358,15 @@
 		(uuid "a2e3f487-ada5-46f2-9b15-de1c621fd9bd")
 	)
 	(embedded_fonts no)
+	(model "/Users/niklasroth/Downloads/BRX1_2032_SM/BRX1-2032-SM.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 -0)
+		)
+	)
 )

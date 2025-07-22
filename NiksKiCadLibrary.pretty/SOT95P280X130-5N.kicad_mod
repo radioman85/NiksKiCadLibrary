@@ -246,4 +246,15 @@
 			(xyz 0 0 0)
 		)
 	)
+	(model "/Users/niklasroth/Downloads/LIB_XC9265A181MR-G/XC9265A181MR-G/3D/XC9265A181MR-G.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

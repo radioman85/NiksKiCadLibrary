@@ -471,4 +471,15 @@
 			(xyz 0 0 0)
 		)
 	)
+	(model "/Users/niklasroth/Downloads/LIB_nRF52840-QFAA-F-R7/nRF52840-QFAA-F-R7/3D/nRF52840-QFAA-F-R7.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )
