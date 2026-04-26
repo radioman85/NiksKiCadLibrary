@@ -1,0 +1,113 @@
+(footprint "TP_2Point_THR"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 1.524 -3.302 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "a5108b0a-706a-469a-9182-b6fb0692139c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "TP_2Point"
+		(at 1.016 -5.334 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "fd4d137f-2423-49a1-a6e9-9d6ba527e36b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "23e66357-7146-4338-9162-423bf1a24c04")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "94765bcb-eadb-49d9-bde8-3446d6cd26d4")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start 1.5 3)
+		(end 3.5 3)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "0b644e9c-fee6-46cb-ab5a-cfb03e88b5f8")
+	)
+	(fp_line
+		(start 2 3.5)
+		(end 3 3.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "ed5d9735-3662-4ded-a2d5-2ecc11e10ad9")
+	)
+	(fp_line
+		(start 2.5 3)
+		(end 2.5 2)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "ab516ac6-2650-47be-9883-028e80baabf9")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 1.524 -3.048 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "cfc469c1-efbe-4253-93b0-9dedc1566ee9")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at 0 0)
+		(size 2 2)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "4a95b0b5-196f-48cc-9d68-e8933a828931")
+	)
+	(pad "2" thru_hole circle
+		(at 0 2.5)
+		(size 2 2)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "d701a2e5-0283-42f5-89e7-b58e825d9771")
+	)
+	(embedded_fonts no)
+)
