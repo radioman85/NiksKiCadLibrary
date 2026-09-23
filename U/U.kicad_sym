@@ -43,7 +43,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "CY8C6244AZI-S4D93"
+		(property "Datasheet" "https://www.infineon.com/dgdl/Infineon-PSoC_6_MCU_CY8C62X4-DataSheet-v11_00-EN.pdf?fileId=8ac78c8c7ddc01d7017ddd026d585901"
 			(at 53.34 7.62 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -98,6 +98,55 @@
 				)
 			)
 		)
+		(property "MPN" "CY8C6244AZI-S4D93"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "MFG" "Infineon Technologies"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "DigiKey" "448-CY8C6244AZI-S4D93-ND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "Origin" "TW"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+
 		(symbol "CY8C6244AZI-S4D93_1_1"
 			(unit_name "PSoC62 Ports")
 			(polyline
@@ -1775,6 +1824,55 @@
 				)
 			)
 		)
+		(property "MPN" "HCF4094YM013TR"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "MFG" "STMicroelectronics"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "DigiKey" "497-14377-1-ND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "Origin" "SG"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+
 		(symbol "HCF4094YM013TR_1_1"
 			(rectangle
 				(start 5.08 2.54)
@@ -2118,7 +2216,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/cd74ac109.pdf"
 			(at 0 -7.62 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2160,6 +2258,43 @@
 				)
 			)
 		)
+		(property "MPN" "CD74AC109M96"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "MFG" "Texas Instruments"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "DigiKey" "296-4221-1-ND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+
 		(symbol "JK-FF DUAL CD74AC109M96_1_1"
 			(polyline
 				(pts
@@ -2727,6 +2862,55 @@
 				(justify left)
 			)
 		)
+		(property "MPN" "L6982CDR"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "MFG" "STMicroelectronics"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "DigiKey" "497-L6982CDRCT-ND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "Origin" "IT"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+
 		(symbol "L6982CDR_0_0"
 			(pin passive line
 				(at 38.1 -5.08 180)
@@ -3185,7 +3369,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksLibrary:VFSOP8_2P1X2P4_ONS"
+		(property "Footprint" "NiksKiCadLibrary:VFSOP8_2P1X2P4_ONS"
 			(at 15.24 14.224 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3197,7 +3381,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "NL17SZ74USG"
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/nl17sz74-d.pdf"
 			(at 5.588 12.192 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3252,6 +3436,55 @@
 				)
 			)
 		)
+		(property "MPN" "NL17SZ74USG"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "MFG" "onsemi"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "DigiKey" "NL17SZ74USGOSCT-ND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "Origin" "TH"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+
 		(symbol "NL17SZ74USG_1_1"
 			(rectangle
 				(start 7.62 2.54)
@@ -3467,7 +3700,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/6470/NRF5340-QKAA-R7.pdf"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3537,6 +3770,43 @@
 				(justify bottom)
 			)
 		)
+		(property "MPN" "NRF5340-QKAA-R7"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "MFG" "Nordic Semiconductor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "DigiKey" "4823-NRF5340-QKAA-R7TR-ND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+
 		(symbol "NRF5340-QKAA-R7_1_0"
 			(rectangle
 				(start 5.08 -127)
@@ -5704,7 +5974,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/6470/NRF7002-QFAA-R.pdf"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5774,6 +6044,43 @@
 				(justify bottom)
 			)
 		)
+		(property "MPN" "NRF7002-QFAA-R"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "MFG" "Nordic Semiconductor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "DigiKey" "4823-NRF7002-QFAA-RCT-ND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+
 		(symbol "NRF7002-QFAA-R_0_0"
 			(rectangle
 				(start 5.08 -63.5)
@@ -6708,7 +7015,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf"
 			(at 25.4 -39.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6740,6 +7047,55 @@
 				)
 			)
 		)
+		(property "MPN" "SC0915"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "MFG" "Raspberry Pi"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "DigiKey" "2648-SC0915CT-ND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "Origin" "GB"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+
 		(symbol "RPi-Pico_0_0"
 			(text "Raspberry Pi Pico"
 				(at 16.51 7.62 0)
@@ -7589,8 +7945,52 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://datasheets.raspberrypi.com/pico/pico-w-datasheet.pdf"
 			(at 25.4 -39.37 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "SC0918"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MFG" "Raspberry Pi"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DigiKey" "2648-SC0918CT-ND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Origin" "JP"
+			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(hide yes)
@@ -8432,6 +8832,39 @@
 				)
 			)
 		)
+		(property "MPN" "STBB1-APUR"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MFG" "STMicroelectronics"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DigiKey" "497-11971-1-ND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(property "Description" ""
 			(at 0 0 0)
 			(show_name no)
@@ -8465,6 +8898,19 @@
 				)
 			)
 		)
+		(property "Origin" "MY"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+
 		(symbol "STBB1-APUR_1_1"
 			(rectangle
 				(start 2.54 -2.54)
@@ -8721,7 +9167,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "SX1276IMLTRT"
+		(property "Datasheet" "https://semtech.my.salesforce.com/sfc/p/E0000000JelG/a/2R0000001OKs/Bs97dmPXeatnbdoJNVMIDaKDlQz8q1N_gxDcgqi7g2o"
 			(at -3.81 6.35 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8776,6 +9222,43 @@
 				)
 			)
 		)
+		(property "MPN" "SX1276IMLTRT"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "MFG" "Semtech"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "DigiKey" "SX1276IMLTRTCT-ND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+
 		(symbol "SX1276IMLTRT_1_1"
 			(unit_name "SX76 Logic")
 			(polyline
@@ -9445,7 +9928,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.ti.com/lit/gpn/tps65987d"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9503,6 +9986,43 @@
 				(justify bottom)
 			)
 		)
+		(property "MPN" "TPS65987DDHRSHR"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "MFG" "Texas Instruments"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "DigiKey" "296-52067-1-ND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+
 		(symbol "TPS65987DDHRSHR_0_0"
 			(rectangle
 				(start -22.86 -132.08)
@@ -11045,6 +11565,43 @@
 				(justify left top)
 			)
 		)
+		(property "MPN" "TS5A3159DBVR"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "MFG" "Texas Instruments"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "DigiKey" "296-17319-1-ND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+
 		(symbol "TS5A3159DBVR_0_1"
 			(polyline
 				(pts
@@ -11270,7 +11827,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/tsb622.pdf"
 			(at 0 -1.27 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11312,6 +11869,43 @@
 				)
 			)
 		)
+		(property "MPN" "TSB622IQ3T"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "MFG" "STMicroelectronics"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "DigiKey" "497-TSB622IQ3TCT-ND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+
 		(symbol "TSB622IQ3T_1_1"
 			(polyline
 				(pts

@@ -123,6 +123,50 @@
 				)
 			)
 		)
+		(property "MPN" "LTST-E563CEGBW"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MFG" "Lite-On"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DigiKey" "160-2264-1-ND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Origin" "CN"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(symbol "LTST-E563CEGBW_0_1"
 			(polyline
 				(pts
@@ -567,7 +611,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "SMLP36RGBNW3"
+		(property "Datasheet" "https://www.rohm.com/datasheet?p=SMLP36RGBNW3"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -612,6 +656,43 @@
 				)
 			)
 		)
+		(property "MPN" "SMLP36RGBNW3"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "MFG" "Rohm Semiconductor"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "DigiKey" "846-SMLP36RGBNW3TR-ND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+
 		(symbol "SMLP36RGBNW3_0_1"
 			(polyline
 				(pts

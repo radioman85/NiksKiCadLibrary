@@ -125,6 +125,43 @@
 				(justify left top)
 			)
 		)
+		(property "MPN" "ACZ11BR4E-15FA1-20C"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "MFG" "Same Sky"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "DigiKey" "102-1753-ND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+
 		(symbol "ACZ11BR4E-15FA1-20C_1_1"
 			(rectangle
 				(start 5.08 7.62)
@@ -295,7 +332,7 @@
 				)
 			)
 		)
-		(property "Footprint" "SW_B3U-3100P_OMR"
+		(property "Footprint" "NiksKiCadLibrary:SW_B3U-3100P_OMR"
 			(at 18.034 22.86 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -307,7 +344,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "B3U-3100P"
+		(property "Datasheet" "https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3u.pdf"
 			(at 13.716 20.066 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -362,6 +399,43 @@
 				)
 			)
 		)
+		(property "MPN" "B3U-3100P"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "MFG" "Omron Electronics"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "DigiKey" "SW1023CT-ND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+
 		(symbol "B3U-3100P_0_1"
 			(polyline
 				(pts
@@ -605,7 +679,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "MSS3-V-T/R"
+		(property "Datasheet" "https://www.dip.com.tw/en/product/category/9/product/114"
 			(at 0 7.62 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -650,6 +724,31 @@
 				)
 			)
 		)
+		(property "MPN" "MSS3-V-T/R"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "MFG" "Diptronics"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+
 		(symbol "MSS3-V-T_R_0_1"
 			(polyline
 				(pts
@@ -1021,6 +1120,31 @@
 				(justify left top)
 			)
 		)
+		(property "MPN" "MSS6-V-T/R"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "MFG" "Diptronics"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+
 		(symbol "MSS6-V-T_R_0_1"
 			(polyline
 				(pts
@@ -1420,7 +1544,7 @@
 				(justify left top)
 			)
 		)
-		(property "Datasheet" "https://componentsearchengine.com/Datasheets/1/PEC11S-929K-S0015.pdf"
+		(property "Datasheet" "https://www.bourns.com/docs/Product-Datasheets/PEC11S.pdf"
 			(at 43.434 -7.366 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1503,6 +1627,43 @@
 				(justify left top)
 			)
 		)
+		(property "MPN" "PEC11S-929K-S0015"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "MFG" "Bourns"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "DigiKey" "PEC11S-929K-S0015-ND"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+
 		(symbol "PEC11S-929K-S0015_1_1"
 			(rectangle
 				(start 5.08 2.54)
