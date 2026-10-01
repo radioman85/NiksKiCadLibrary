@@ -1,0 +1,219 @@
+(footprint "BAT_AAA_Placeholder"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "AAA (LR03) battery layout placeholder - silkscreen outline only, no pads. Cell envelope 44.5 x 10.5 mm, + terminal toward +X.")
+	(attr smd)
+	(property "Reference" "REF**"
+		(at 0 7.5 0)
+		(layer "F.SilkS")
+		(uuid "24ba1998-9c7d-4e0a-a1b0-d9cc59c9fbce")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "BAT_AAA_Placeholder"
+		(at 0 -7.5 0)
+		(layer "F.Fab")
+		(uuid "4ed69abb-3a5d-4d44-8f19-f90f6b26403b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6408132a-77d4-4069-841f-0e2e7e18c697")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ff63de6d-85a2-4646-b81b-1dbfb1f2a9b9")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(fp_text user "+"
+		(at 18 0 0)
+		(layer "F.SilkS")
+		(uuid "af89c280-af1d-49e9-9a89-bc7c73ccd198")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.2)
+			)
+		)
+	)
+	(fp_text user "-"
+		(at -18 0 0)
+		(layer "F.SilkS")
+		(uuid "42469162-8d6a-414c-9ad2-0613eaed7469")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.2)
+			)
+		)
+	)
+	(fp_text user "+"
+		(at 18 0 0)
+		(layer "F.Fab")
+		(uuid "2c581ad6-9d69-4d10-abb0-13a03a8200eb")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.2)
+			)
+		)
+	)
+	(fp_text user "-"
+		(at -18 0 0)
+		(layer "F.Fab")
+		(uuid "6af9ceb9-281d-482c-824b-96ece9eb4281")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.2)
+			)
+		)
+	)
+	(fp_line
+		(start -22.25 5.25)
+		(end 22.25 5.25)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "26225be5-b5e9-483c-993b-5cf1c537c0d1")
+	)
+	(fp_line
+		(start 22.25 5.25)
+		(end 22.25 -5.25)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "9f953d5f-58c1-4aaa-a0a1-a520209a323b")
+	)
+	(fp_line
+		(start 22.25 -5.25)
+		(end -22.25 -5.25)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "71bd08eb-4000-44b0-b32d-fa52578a5ab0")
+	)
+	(fp_line
+		(start -22.25 -5.25)
+		(end -22.25 5.25)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "36f8a281-abcd-4726-8a77-0ea9ff69cd68")
+	)
+	(fp_line
+		(start -22.25 5.25)
+		(end 22.25 5.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "5b02eaa3-b95f-4690-96fa-ea1d3fc9d8a1")
+	)
+	(fp_line
+		(start 22.25 5.25)
+		(end 22.25 -5.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "9c7d01a9-0637-4c21-95cd-7828be9374ae")
+	)
+	(fp_line
+		(start 22.25 -5.25)
+		(end -22.25 -5.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "aa1a68bc-616d-4392-b77b-db491797086f")
+	)
+	(fp_line
+		(start -22.25 -5.25)
+		(end -22.25 5.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "0aa428cf-93df-4fcb-bfc5-849f7af2eff9")
+	)
+	(fp_line
+		(start -22.75 5.75)
+		(end 22.75 5.75)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "fd6555c0-6451-4425-a9f5-5c150b788ca9")
+	)
+	(fp_line
+		(start 22.75 5.75)
+		(end 22.75 -5.75)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "71d266bd-d6ed-49ff-b833-ff6bad2424cf")
+	)
+	(fp_line
+		(start 22.75 -5.75)
+		(end -22.75 -5.75)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "bd905fa6-3be4-4a18-8ab4-88ec3f31da70")
+	)
+	(fp_line
+		(start -22.75 -5.75)
+		(end -22.75 5.75)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "289faa34-dfe7-4a90-88bf-f16f3891d356")
+	)
+	(embedded_fonts no)
+)

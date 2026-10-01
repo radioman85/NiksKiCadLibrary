@@ -232,4 +232,14 @@
 		(uuid "7e60a770-38d6-4d32-a308-9ba10272653f")
 	)
 	(embedded_fonts no)
+	(model "OLED I2C 0.96 Inch Display.step"
+		(offset (xyz 0.21 -1.25 2.5))
+		(scale (xyz 1 1 1))
+		(rotate (xyz 0 0 0))
+	)
+	(model "OLED I2C 0.96 Inch Display With Headers.step"
+		(offset (xyz 0.21 -1.25 11))
+		(scale (xyz 1 1 1))
+		(rotate (xyz 0 0 0))
+	)
 )
