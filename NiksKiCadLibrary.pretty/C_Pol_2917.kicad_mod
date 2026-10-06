@@ -3,6 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "8.0")
 	(layer "F.Cu")
+	(descr "Polarized tantalum capacitor EIA 2917 (7343-43, E-case), SMD. Source footprint: Accelerated Designs / Murata ECAS-D3 export; 3D model: KiCad Capacitor_Tantalum_SMD CP_EIA-7343-43_Kemet-X (CC-BY-SA 4.0).")
 	(property "Reference" "REF**"
 		(at -0.254 -3.556 0)
 		(layer "F.SilkS")
@@ -14,7 +15,7 @@
 			)
 		)
 	)
-	(property "Value" "CAP_ECAS-D3_MUR"
+	(property "Value" "C_Pol_2917"
 		(at 0 -5.08 0)
 		(layer "F.SilkS")
 		(hide yes)
@@ -50,7 +51,7 @@
 			)
 		)
 	)
-	(property "Description" ""
+	(property "Description" "Polarized tantalum capacitor, EIA 2917 (7343-43) SMD footprint, pad 1 = positive"
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
@@ -828,7 +829,7 @@
 		(layers "F.Cu" "F.Paste" "F.Mask")
 		(uuid "d6a3bc19-ee56-4ace-a9f2-4937470ad854")
 	)
-	(model "C:/Users/niklas.roth/Downloads/ul_ECASD31C476M040KA0 (1)/2023-03-28_11-37-29/STEP/CAP_ECAS-D3_MUR.step"
+	(model "C_Pol_2917.step"
 		(offset
 			(xyz 0 0 0)
 		)
