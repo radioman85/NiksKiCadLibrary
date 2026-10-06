@@ -1,0 +1,86 @@
+(kicad_pcb
+	(version 20241229)
+	(generator "pcbnew")
+	(general (thickness 1.6))
+	(paper "A4")
+	(layers (0 "F.Cu" signal))
+	(footprint "NiksKiCadLibrary:C_0402"
+		(layer "F.Cu")
+		(uuid "00000000-0000-0000-0000-000000000001")
+		(at 10 10)
+		(attr smd)
+		(property "Reference" "C1"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(uuid "00000000-0000-0000-0000-000000000002")
+		)
+		(property "Value" "100nF"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "00000000-0000-0000-0000-000000000003")
+		)
+		(property "DigiKey" "490-10698-1-ND"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "00000000-0000-0000-0000-000000000004")
+		)
+	)
+	(footprint "NiksKiCadLibrary:C_0402"
+		(layer "F.Cu")
+		(uuid "00000000-0000-0000-0000-000000000005")
+		(at 12 10)
+		(attr smd)
+		(property "Reference" "C2"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(uuid "00000000-0000-0000-0000-000000000006")
+		)
+		(property "Value" "100nF"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "00000000-0000-0000-0000-000000000007")
+		)
+		(property "DigiKey" "490-10698-1-ND"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "00000000-0000-0000-0000-000000000008")
+		)
+	)
+	(footprint "NiksKiCadLibrary:R_0603"
+		(layer "F.Cu")
+		(uuid "00000000-0000-0000-0000-000000000009")
+		(at 14 10)
+		(attr smd)
+		(property "Reference" "R1"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(uuid "00000000-0000-0000-0000-00000000000a")
+		)
+		(property "Value" "10k"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "00000000-0000-0000-0000-00000000000b")
+		)
+		(property "MPN" "RC0603FR-0710KL"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "00000000-0000-0000-0000-00000000000c")
+		)
+	)
+	(footprint "NiksKiCadLibrary:U_SOIC8"
+		(layer "F.Cu")
+		(uuid "00000000-0000-0000-0000-00000000000d")
+		(at 20 10)
+		(attr smd exclude_from_bom)
+		(property "Reference" "U1"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(uuid "00000000-0000-0000-0000-00000000000e")
+		)
+		(property "Value" "L6982CDR"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "00000000-0000-0000-0000-00000000000f")
+		)
+	)
+)

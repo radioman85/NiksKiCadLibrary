@@ -116,6 +116,38 @@ The `tools/add_part.py` tool stores the reference with `--digikey <DK#>`
 (e.g. `--digikey 535-13583-1-ND`). It sets or updates the hidden `DigiKey`
 property and reports it after the run.
 
+### Building a Digi-Key order list (upload file)
+
+`tools/digikey_order.py` turns a design into a Digi-Key upload file, so the user
+never has to assemble the order list by hand:
+
+```bash
+python3 "<skill_dir>/tools/digikey_order.py" board.kicad_pcb --out-dir order/
+```
+
+It reads the components actually used in the design (PCB footprints; or
+`--source sch` for the placed symbols of every sheet in the hierarchy), takes
+the `DigiKey` property (any spelling: `DigiKey`, `Digi-Key PN`,
+`Digi-Key Part Number`, …), merges equal parts into one order line with the
+summed quantity and writes four files:
+
+| File | Purpose |
+|------|---------|
+| `digikey_upload.csv` | Digi-Key list upload — `Digi-Key Part Number,Customer Reference,Quantity` (`--with-mpn` adds manufacturer columns) |
+| `digikey_list.txt` | one part number per line, for pasting into the cart |
+| `digikey_bom.csv` | full BOM incl. Value, Footprint, MPN, Origin |
+| `digikey_missing.csv` | parts with **no** Digi-Key number — the work list for step 4 of the lookup procedure above |
+
+Skipped: footprints/symbols flagged *exclude from BOM*, DNP symbols, power
+symbols and references like `REF**`. Options: `--generic-map FILE` fills
+generic R/C/L parts from a `Value,Footprint,DigiKey` CSV, `--multiplier 2`
+doubles quantities for two boards, `--strict` exits non-zero while parts are
+missing, `--source pcb|sch|auto` picks the input.
+
+The tool never invents a part number: parts without a `DigiKey` property are
+only reported, and their DK numbers have to be looked up and written back into
+the symbol/footprint (then re-run).
+
 ## Country of origin (`Origin`)
 
 Every part we add should also carry the **country of origin** in an `Origin`
@@ -195,6 +227,9 @@ so 3D previews work without configuring extra search paths.
 - The user asks what designator a component should use, or how the library is
   organized.
 - The user asks to fix the reference prefix of an existing symbol.
+- The user wants to **order** the components of a design — run
+  `tools/digikey_order.py` (see *Building a Digi-Key order list*) to produce the
+  Digi-Key upload file and the list of parts still missing a Digi-Key number.
 
 ## Workflow: add a new part
 

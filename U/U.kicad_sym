@@ -12270,7 +12270,29 @@
 					(size 1.27 1.27)
 				)
 			)
+		)	(property "MFG" "TOREX Semiconductor"
+		(at 0 0 0)
+		(show_name no)
+		(do_not_autoplace no)
+		(hide yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
 		)
+	)
+	(property "MPN" "XC6135C27ANR-G"
+		(at 0 0 0)
+		(show_name no)
+		(do_not_autoplace no)
+		(hide yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+
 		(symbol "VoltageSupervisor_0_1"
 			(rectangle
 				(start 2.54 2.54)
