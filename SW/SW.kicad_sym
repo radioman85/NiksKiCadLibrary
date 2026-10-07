@@ -637,13 +637,16 @@
 		(embedded_fonts no)
 	)
 	(symbol "KSC721J LFS"
+		(pin_numbers
+			(hide yes)
+		)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
 		(duplicate_pin_numbers_are_jumpers no)
-		(property "Reference" "U"
-			(at 0 0 0)
+		(property "Reference" "SW"
+			(at 7.112 3.048 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -663,7 +666,7 @@
 			)
 		)
 		(property "Footprint" "NiksKiCadLibrary:SW_Push_1P1T_NO_CK_KSC7xxJ"
-			(at 0 0 0)
+			(at 5.334 -6.35 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(hide yes)
@@ -696,7 +699,7 @@
 			)
 		)
 		(property "MNP" "KSC721J LFS"
-			(at 0 0 0)
+			(at 11.43 -4.064 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(hide yes)
@@ -707,7 +710,7 @@
 			)
 		)
 		(property "MFG" "C&K"
-			(at 0 0 0)
+			(at 0.254 -4.064 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(hide yes)
@@ -775,6 +778,8 @@
 					(type none)
 				)
 			)
+		)
+		(symbol "KSC721J LFS_1_1"
 			(pin passive line
 				(at 0 0 0)
 				(length 2.54)
