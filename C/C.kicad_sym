@@ -58,7 +58,7 @@
 				)
 			)
 		)
-		(property "Description" "Generic MLCC capacitor. Aisler Smart Match: MPN = \"<value> <voltage> <dielectric> <size>\". Edit Value/Voltage/Dielectric/Tolerance/MPN together."
+		(property "Description" "Generic MLCC capacitor. Aisler Smart Match format: \"<value> <voltage> <dielectric> <size>\" e.g. \"100nF 50V X7R 0603\"; set MPN to an exact part number once a specific part is chosen."
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -257,7 +257,7 @@
 				)
 			)
 		)
-		(property "Description" "Generic polarized capacitor (EIA 2917 footprint, pad 1 = positive). Set the exact MPN when the part is chosen; Aisler Smart Match may not cover polarized caps."
+		(property "Description" "Generic polarized capacitor (pad 1 = positive). Set the exact MPN when the part is chosen; Aisler Smart Match may not cover polarized capacitors."
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
