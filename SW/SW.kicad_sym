@@ -655,7 +655,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "KSC721J LFS"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -698,7 +698,7 @@
 				)
 			)
 		)
-		(property "MNP" "KSC721J LFS"
+		(property "MPN" "KSC721J LFS"
 			(at 11.43 -4.064 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -721,6 +721,17 @@
 			)
 		)
 		(property "Origin" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DigiKey" "CKN10308CT-ND"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
