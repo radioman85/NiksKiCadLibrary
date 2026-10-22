@@ -86,6 +86,37 @@ The `tools/add_part.py` tool supports setting these at add time:
 When in doubt after adding a part, verify an MPN field exists and matches the
 manufacturer datasheet/order code exactly.
 
+## Vendor quirks (SnapEDA / SamacSys / TI packages)
+
+Things that regularly trip up a part import — the tool now handles most of
+them, but know them when a report surprises you:
+
+- **Legacy `(module …)` footprints.** Old vendor footprints use the KiCad 4/5
+  syntax. `tools/add_part.py` converts them automatically (layers quoted,
+  `(width …)` → `(stroke (width …) (type …))`, quoted pad numbers, `"%R"` →
+  `"${REFERENCE}"`, legacy `(model … (at (xyz …)))` → `(offset (xyz …))`).
+  If a file uses a construct the converter does not know, the tool reports it
+  and asks for a manual conversion instead of writing something broken.
+- **Legacy `fp_arc` semantics differ from the modern ones.** In the KiCad 4/5
+  format the arc's `start` is its **centre**, `end` is the **first point** of
+  the arc and `angle` is the sweep (positive = increasing angle). The modern
+  format describes the arc by three points `(start …) (mid …) (end …)`.
+  Never guess this — `kicad-cli fp upgrade <lib.pretty>` shows KiCad's own
+  interpretation, which is the reference for any conversion.
+- **Several footprint files with the same internal name.** TI-style packages
+  ship `DGS10_TEX.kicad_mod`, `DGS10_TEX-M.kicad_mod`, `DGS10_TEX-L.kicad_mod`
+  that all declare `(footprint "DGS10_TEX" …)`. The output file name comes
+  from that internal name, so they would overwrite each other — the tool
+  detects the collision and names each footprint after its source file.
+- **SnapEDA/SamacSys symbols** carry `Reference` = `IC` (rewritten to the
+  designator) and extra vendor fields (`Mouser Part Number`,
+  `Mouser Price/Stock`, `Manufacturer_Name`, `Manufacturer_Part_Number`,
+  `Height`, `ki_description`). They are kept as they are; Aisler reads `MPN`,
+  so a duplicated `Manufacturer_Part_Number` is harmless.
+- **Vendor model blocks are replaced.** The tool writes the `(model …)` block
+  with neutral values, so the vendor's rotation/offset is lost — it is still
+  in the source file if you want to look at it.
+
 ## Distributor data (DigiKey)
 
 Every part we add should carry the **Digi-Key part (order) number** in a
@@ -111,6 +142,18 @@ added**, not a broad catalog query:
 5. If no exact match exists (end-of-life part, or not stocked by DigiKey),
    leave the `DigiKey` field unset and tell the user the part could not be
    found on DigiKey — do not substitute a similar part without asking.
+
+Practical notes:
+
+- digikey.com **blocks automated page fetches** (HTTP 403). Use the search
+  result page (`https://www.digikey.com/en/products/result?keywords=<MPN>`)
+  or ask the user; do not spend time fighting the block.
+- One MPN is often listed in several packaging variants: `-TR-ND` (tape &
+  reel), `-CT-ND` (cut tape), `-DKR-ND` (Digi-Key reel). Pick the tape &
+  reel variant unless the user says otherwise, and mention the alternatives.
+- If the country of origin is not listed on the product page, try
+  **farnell.com** (it often lists it) or the manufacturer datasheet; if it is
+  still unknown, leave `Origin` unset — silently, no warning needed.
 
 The `tools/add_part.py` tool stores the reference with `--digikey <DK#>`
 (e.g. `--digikey 535-13583-1-ND`). It sets or updates the hidden `DigiKey`
@@ -158,8 +201,11 @@ relevant for customs and purchasing documentation.
 
 - Record the value for **exactly the component being added** — from its own
   product page or datasheet, not a similar part.
-- If the country is not listed anywhere for the exact part, leave `Origin`
-  unset and say so; do not guess.
+- Where DigiKey blocks the lookup, **farnell.com often lists the country of
+  origin** (product page → *Country of Origin*); Mouser and RS list it too.
+- If the country cannot be found anywhere for the exact part, leave `Origin`
+  **unset — silently**. The field simply stays empty; that is fine and needs
+  no report, no warning and no guessing.
 - The `tools/add_part.py` tool stores it with `--origin <code>`
   (e.g. `--origin CN`).
 
@@ -213,11 +259,27 @@ Rules:
 )
 ```
 
+The `(model ...)` block keeps these neutral values; the 3D model is oriented by
+the user in KiCad, not by us.
+
 ### 3D models (`NiksKiCadLibrary.3dshapes/`)
 
 Copy the `.step`/`.stp` here and reference it from the footprint by **bare
 filename** (no path). KiCad resolves it from the sibling `.3dshapes` folder,
 so 3D previews work without configuring extra search paths.
+
+**Orientation is the user's job — do not work it out.** Copy the model file,
+reference it by bare filename, and leave the `(model ...)` block with the
+neutral `(offset (xyz 0 0 0))` / `(rotate (xyz 0 0 0))` values that
+`tools/add_part.py` writes. The user adjusts rotation/offset/scale in the
+KiCad 3D viewer.
+
+Never spend effort on: parsing STEP geometry to derive the model's axis
+mapping, guessing the KiCad model-rotation composition order, rendering
+boards with `kicad-cli pcb render` to measure silhouettes, or reasoning about
+pin-1 alignment. These analyses are unreliable (the STEP axes, the vendor's
+own rotation and the KiCad rotation convention rarely agree) and they cost a
+lot of time. The user explicitly takes care of 3D model placement.
 
 ## When to use this skill
 
@@ -249,10 +311,10 @@ exists in the target library (duplicates are rejected by the tool).
 ### 3. Run the provided tool
 
 Prefer the bundled `tools/add_part.py` for the mechanical file editing — it
-handles old-format (KiCad 6/7) vendor files, converts indentation, updates the
-`Reference` and `Footprint` properties, adds the `(model ...)` block, copies
-the 3D model, registers a brand-new designator library in `sym-lib-table`, and
-verifies balanced parentheses:
+handles old-format (KiCad 4/5 `module` and KiCad 6/7) vendor files, converts
+indentation to tabs, updates the `Reference` and `Footprint` properties, adds
+the `(model ...)` block, copies the 3D model, registers a brand-new designator
+library in `sym-lib-table`, and verifies balanced parentheses:
 
 ```bash
 python3 "<skill_dir>/tools/add_part.py" \
@@ -278,6 +340,10 @@ and pass `--digikey` with the result. Pick up the *Country of Origin* from the
 same product page and pass it with `--origin` (see the *Country of origin*
 section); leave it out if it is not listed for the exact part.
 
+The 3D model is only **copied** into `NiksKiCadLibrary.3dshapes/` and
+referenced by bare filename. Do not try to orient it — see
+*3D models (`NiksKiCadLibrary.3dshapes/`)*.
+
 ### 4. Review the result
 
 - The symbol is in `<DES>/<DES>.kicad_sym` with `Reference` = designator and
@@ -285,6 +351,18 @@ section); leave it out if it is not listed for the exact part.
 - The footprint is in `NiksKiCadLibrary.pretty/` with a `(model "...")` block
   whose bare filename exists in `NiksKiCadLibrary.3dshapes/`.
 - No duplicate part numbers; s-exprs are balanced.
+- The tool reported no `!` lines (a `!` line means something needed attention:
+  a renamed footprint, a manual conversion, a missing model, or a symbol whose
+  footprint is not in the library).
+- The generated footprint really parses in KiCad. Plot it with the CLI:
+
+  ```bash
+  flatpak run --command=kicad-cli org.kicad.KiCad \
+    fp export svg --output <out-dir> <path-to>.pretty
+  ```
+
+  The output directory must be a **directory**, and the library has to live
+  under `/home/nik` — the flatpak sandbox cannot read `/tmp`.
 - An **MPN** property exists (any of `MPN`/`Mpn`/`mpn`/`AISLER_MPN`) and holds
   the exact manufacturer part number, or a valid Smart Match string for generic
   R/C/L/LEDs — so Aisler.net can auto-assign the part for Assembly.
@@ -292,8 +370,8 @@ section); leave it out if it is not listed for the exact part.
   for this exact component (unless the part is genuinely unavailable on
   DigiKey — then it was explicitly reported).
 - An **`Origin`** property holds the country of origin (ISO country code) of
-  this exact component, taken from its distributor page or datasheet, or is
-  explicitly reported as not listed.
+  this exact component, taken from its distributor page or datasheet — or is
+  left unset (silently) when it cannot be found.
 - If the source was unusual (multi-unit IC, power pins, non-standard graphics),
   open the touched files and sanity-check the pins and units before handoff.
 
@@ -328,14 +406,15 @@ Before handoff:
 - `Footprint` property is `NiksKiCadLibrary:<existing footprint>`.
 - Footprint file is `NiksKiCadLibrary.pretty/<name>.kicad_mod`.
 - 3D model file exists in `NiksKiCadLibrary.3dshapes/` and is referenced by
-  bare filename in the footprint.
+  bare filename in the footprint. (Its placement/orientation is not checked —
+  the user sets that up in KiCad.)
 - MPN property is present and is the exact manufacturer part number (or a
   valid Aisler Smart Match string for generic R/C/L/LEDs).
 - `DigiKey` property holds the Digi-Key part number found for this exact
   component (a genuinely unavailable part was reported to the user instead of
   substituting a similar one).
-- `Origin` property holds the country of origin of this exact component, or
-  the missing value was explicitly reported (no guessing).
+- `Origin` property holds the country of origin of this exact component, or is
+  left unset (silently) because it could not be found (no guessing).
 - All touched files have balanced parentheses.
 - Only touched what was necessary; the monolith `NiksKiCadLibrary.kicad_sym`
   is never modified.
@@ -348,5 +427,8 @@ Before handoff:
   copy them from the vendor files.
 - Do not modify the obsolete monolith; new parts only go into the designator
   libraries.
+- Do not analyse, derive, or "fix" 3D model orientation (STEP geometry, axis
+  mapping, rotation composition order, render-based silhouette measuring).
+  Copy the model, reference it by bare filename, and let the user orient it.
 - File parsing (balanced parens) is not a substitute for opening the part in
-  KiCad and visually checking pins, units, and 3D orientation.
+  KiCad and visually checking pins and units.

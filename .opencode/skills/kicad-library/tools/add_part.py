@@ -341,11 +341,210 @@ def add_symbols_to_lib(lib_path: Path, forms: list[tuple[str, str]]) -> None:
 
 
 # ---------------------------------------------------------------------------
+#  legacy (KiCad 4/5) footprint conversion
+# ---------------------------------------------------------------------------
+
+LEGACY_MODULE_RE = re.compile(r'\s*\(module\s+"?([^"\s()]+)"?')
+LAYER_TOKEN_RE = re.compile(r'\((layer|layers)\s+([^()]*)\)')
+WIDTH_RE = re.compile(r'\(width\s+([0-9.]+)\)')
+PAD_NUM_RE = re.compile(r'\(pad\s+"?([A-Za-z0-9_]+)"?')
+HEAD_TOKEN_RE = re.compile(r'^\s*\(\s*([A-Za-z][A-Za-z0-9_-]*)')
+
+
+def _quote_layers(text: str) -> str:
+    def repl(m):
+        tok, names = m.group(1), m.group(2).split()
+        return f'({tok} ' + " ".join(f'"{n}"' for n in names) + ')'
+    return LAYER_TOKEN_RE.sub(repl, text)
+
+
+def _width_to_stroke(text: str, stroke_type: str = "solid") -> str:
+    return WIDTH_RE.sub(
+        lambda m: f'(stroke (width {m.group(1)}) (type {stroke_type}))', text
+    )
+
+
+def _count_parens(text: str) -> tuple[int, int]:
+    """Count '(' and ')' outside of quoted strings."""
+    opens = closes = 0
+    i, n = 0, len(text)
+    while i < n:
+        c = text[i]
+        if c == '"':
+            i = _skip_string(text, i)
+            continue
+        if c == "(":
+            opens += 1
+        elif c == ")":
+            closes += 1
+        i += 1
+    return opens, closes
+
+
+def _leading_closes(text: str) -> int:
+    """Number of ')' that appear before the first '(' (outside strings)."""
+    i, n = 0, len(text)
+    lead = 0
+    while i < n:
+        c = text[i]
+        if c == '"':
+            i = _skip_string(text, i)
+            continue
+        if c == "(":
+            return lead
+        if c == ")":
+            lead += 1
+        i += 1
+    return lead
+
+
+def _indent_tabs(text: str) -> str:
+    """Re-indent a single s-expression with tabs (repo convention)."""
+    out = []
+    depth = 0
+    for raw in text.split("\n"):
+        s = raw.strip()
+        if not s:
+            continue
+        opens, closes = _count_parens(s)
+        out.append("\t" * max(depth - _leading_closes(s), 0) + s)
+        depth += opens - closes
+    return "\n".join(out)
+
+
+def _legacy_arc_points(sx, sy, ex, ey, angle_deg):
+    """Legacy `fp_arc` -> modern (start, mid, end).
+
+    In the KiCad 4/5 format the arc's "start" is its CENTRE, "end" is the
+    first point of the arc and "angle" is the sweep (positive = increasing
+    angle).  The modern format describes the arc by three points.
+    """
+    import math
+
+    r = math.hypot(ex - sx, ey - sy)
+    if r == 0.0:
+        return None
+    phi = math.atan2(ey - sy, ex - sx)          # direction of the first point
+    a = math.radians(angle_deg)
+
+    def point(theta):
+        return (sx + r * math.cos(theta), sy + r * math.sin(theta))
+
+    return point(phi), point(phi + a / 2.0), point(phi + a)
+
+
+def _legacy_child(child: str) -> str | None:
+    """Convert one legacy footprint child; None = unsupported construct."""
+    mt = HEAD_TOKEN_RE.match(child)
+    head = (mt.group(1) if mt else "").lower()
+    if head in ("tedit", "tstamp"):
+        return ""
+    if head == "fp_arc":
+        ms = re.search(r'\(start\s+(-?[\d.]+)\s+(-?[\d.]+)\)', child)
+        me = re.search(r'\(end\s+(-?[\d.]+)\s+(-?[\d.]+)\)', child)
+        ma = re.search(r'\(angle\s+(-?[\d.]+)\)', child)
+        if not (ms and me and ma):
+            return None
+        pts = _legacy_arc_points(
+            float(ms.group(1)), float(ms.group(2)),
+            float(me.group(1)), float(me.group(2)),
+            float(ma.group(1)),
+        )
+        if pts is None:
+            return None
+        start, mid, end = pts
+        triple = (
+            f"(start {start[0]:.6f} {start[1]:.6f}) "
+            f"(mid {mid[0]:.6f} {mid[1]:.6f}) "
+            f"(end {end[0]:.6f} {end[1]:.6f})"
+        )
+        child, n = re.subn(
+            r'\(start\s+-?[\d.]+\s+-?[\d.]+\)\s*'
+            r'\(end\s+-?[\d.]+\s+-?[\d.]+\)\s*'
+            r'\(angle\s+-?[\d.]+\)',
+            triple, child, count=1)
+        if not n:
+            return None
+        child = _width_to_stroke(child, "default")
+    elif head in ("fp_line", "fp_poly", "fp_rect"):
+        child = _width_to_stroke(child, "solid")
+    elif head == "fp_circle":
+        child = _width_to_stroke(child, "default")
+    elif head == "pad":
+        child = PAD_NUM_RE.sub(lambda m: f'(pad "{m.group(1)}"', child)
+    elif head == "model":
+        child = child.replace("(at (xyz", "(offset (xyz")
+        # modern format expects the file name as a quoted string
+        mm = re.match(r'(\s*\(model\s+)([^\s()"]+)', child)
+        if mm:
+            child = mm.group(1) + f'"{mm.group(2)}"' + child[mm.end(2):]
+    elif head == "fp_text":
+        # legacy allowed an unquoted text -> modern needs a quoted string,
+        # and the legacy reference placeholder "%R" is now "${REFERENCE}"
+        mt2 = re.match(
+            r'(\s*\(fp_text\s+(?:reference|value|user)\s+)("[^"]*"|[^\s()]+)', child
+        )
+        if mt2:
+            raw = mt2.group(2)
+            val = raw[1:-1] if raw.startswith('"') else raw
+            if val in ("%R", "%%R"):
+                val = "${REFERENCE}"
+            child = mt2.group(1) + f'"{val}"' + child[mt2.end(2):]
+        # repo convention: the value text belongs on F.Fab, not on F.SilkS
+        if re.match(r'\s*\(fp_text\s+value\b', child):
+            child = re.sub(r'(\(layer\s+)"?F\.SilkS"?', r'\1F.Fab', child, count=1)
+            child = re.sub(r'\s+hide\b', "", child, count=1)
+    elif head in ("layer", "descr", "tags", "attr", "embedded_fonts",
+                  "version", "generator", "generator_version", "property"):
+        pass
+    else:
+        return None
+    child = re.sub(r'\(tstamp\s+[0-9A-Fa-f-]+\)', "", child)
+    child = _quote_layers(child)
+    return child.strip()
+
+
+def legacy_footprint_to_modern(text: str) -> tuple[str, str] | None:
+    """Convert a KiCad 4/5 `(module ...)` footprint to the modern format.
+
+    Returns (modern_text, name) or None if the file uses constructs that
+    cannot be converted safely.
+    """
+    m = LEGACY_MODULE_RE.match(text)
+    if not m:
+        return None
+    name = m.group(1)
+    open_at = text.index("(")
+    close_at = find_close(text, open_at)
+    inner = text[open_at + 1:close_at]
+    q_end = inner.index('"')
+    q_end2 = inner.index('"', q_end + 1)
+    rest = inner[q_end2 + 1:]
+    parts = []
+    for (s, e) in top_spans(rest):
+        conv = _legacy_child(rest[s:e])
+        if conv is None:
+            return None
+        if conv:
+            parts.append(conv)
+    body = "\n".join("\t" + p.replace("\n", "\n\t") for p in parts)
+    header = f'(footprint "{name}" (version 20241229) (generator "pcbnew")'
+    return _indent_tabs(f"{header}\n{body}\n)"), name
+
+
+# ---------------------------------------------------------------------------
 #  footprint handling
 # ---------------------------------------------------------------------------
 
 def process_footprint(ft_text: str) -> tuple[str, str]:
     ft_text = ft_text.strip()
+    if LEGACY_MODULE_RE.match(ft_text):
+        conv = legacy_footprint_to_modern(ft_text)
+        if conv is None:
+            raise ConfigError(
+                "legacy (module ...) footprint with constructs that need a manual conversion"
+            )
+        ft_text = conv[0]
     m = FOOTPRINT_OPEN_RE.match(ft_text)
     if not m:
         raise ConfigError("not a footprint form")
@@ -354,7 +553,10 @@ def process_footprint(ft_text: str) -> tuple[str, str]:
     header = f'(footprint "{name}"'
     if not re.search(r"\(\s*version ", rest):
         header += '\n\t(version 20241229)\n\t(generator "pcbnew")'
-    return header + rest, name
+    form = header + rest
+    # repo convention: the reference placeholder is "REF**"
+    form = re.sub(r'(\(fp_text\s+reference\s+)"[^"]*"', r'\1"REF**"', form)
+    return form, name
 
 
 def attach_model(ft_form: str, model_filename: str) -> str:
@@ -476,6 +678,7 @@ def main() -> int:
     print()
 
     new_lib = not lib_path.exists()
+    added_symbols: list[tuple[str, str]] = []
 
     # ---- symbols ---------------------------------------------------------
     for sf in syms:
@@ -508,6 +711,7 @@ def main() -> int:
                 (name, form, aisler_changes + dk_changes + origin_changes)
             )
         add_symbols_to_lib(lib_path, [(n, f) for n, f, _ in processed])
+        added_symbols.extend((n, f) for n, f, _ in processed)
         for name, form, changes in processed:
             print(f"  symbol added: {name}")
             for c in changes:
@@ -530,13 +734,30 @@ def main() -> int:
         print(f"  {len(processed)} symbol(s) added to {lib_path.name}")
 
     # ---- footprints ------------------------------------------------------
+    # Vendor packages often ship several footprint files that all carry the
+    # same internal name (e.g. DGS10_TEX / DGS10_TEX-M / DGS10_TEX-L).  The
+    # output file name comes from that internal name, so they would overwrite
+    # each other -> name them after their source file instead.
+    fp_items = []
     for ff in fts:
-        ft_text = ff.read_text()
         try:
-            form, ft_name = process_footprint(ft_text)
+            form, ft_name = process_footprint(ff.read_text())
         except ConfigError as exc:
             print(f"  ! {ff.name}: {exc}")
             continue
+        fp_items.append((ff, form, ft_name))
+    name_count = {}
+    for (_ff, _form, nm) in fp_items:
+        name_count[nm] = name_count.get(nm, 0) + 1
+
+    for (ff, form, ft_name) in fp_items:
+        if name_count.get(ft_name, 0) > 1 and ff.stem != ft_name:
+            form = re.sub(
+                r'^\(footprint\s+"[^"]*"', f'(footprint "{ff.stem}"', form, count=1
+            )
+            print(f"  ! {ff.name}: name {ft_name!r} is used by several files "
+                  f"-> using {ff.stem!r}")
+            ft_name = ff.stem
         model = pick_model(ft_name, steps, args.model)
         if model:
             if not (shapes / model).exists():
@@ -558,6 +779,14 @@ def main() -> int:
         if not (shapes / sp.name).exists():
             shutil.copy2(sp, shapes / sp.name)
             print(f"  3D model copied: {shapes / sp.name}")
+
+    # ---- cross-check symbol -> footprint ---------------------------------
+    for (sym_name, sym_form) in added_symbols:
+        fp_val = get_property(sym_form, "Footprint") or ""
+        tail = fp_val.rsplit(":", 1)[-1].strip()
+        if tail and not (pretty / f"{tail}.kicad_mod").exists():
+            print(f"  ! symbol {sym_name}: footprint {tail!r} is not in the library "
+                  f"(available: {', '.join(sorted(p.stem for p in pretty.glob('*.kicad_mod')))})")
 
     # ---- registration of a brand-new designator library ------------------
     if new_lib:
