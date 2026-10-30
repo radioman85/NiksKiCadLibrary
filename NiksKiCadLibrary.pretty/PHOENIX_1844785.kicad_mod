@@ -346,7 +346,7 @@
 		(uuid "3f5855c7-4c51-4a75-a036-bdbc392d2cd9")
 	)
 	(embedded_fonts no)
-	(model "/home/nik/kDrive/Electronics/PCB_Projects/NiksKiCadLibrary/NiksKiCadLibrary.3dshapes/pxc_1844785_03_00_DMC-0-5-8-G1-2-54-P20THR-R44_3D.stp"
+	(model "pxc_1844785_03_00_DMC-0-5-8-G1-2-54-P20THR-R44_3D.stp"
 		(offset
 			(xyz 0 0 0)
 		)

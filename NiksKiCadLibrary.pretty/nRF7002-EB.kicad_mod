@@ -518,7 +518,7 @@
 		(uuid "14b86fac-54ba-4cc2-80fb-2514059d476e")
 	)
 	(embedded_fonts no)
-	(model "C:/Users/z004xj9f/Downloads/NRF7002EB.step"
+	(model "NRF7002EB.step"
 		(opacity 0.5300)
 		(offset
 			(xyz 12.065 16.8656 1.000000007)

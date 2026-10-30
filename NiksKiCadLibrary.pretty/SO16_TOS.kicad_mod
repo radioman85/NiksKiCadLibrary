@@ -374,7 +374,7 @@
 		(uuid "ac291c81-8292-44a4-860e-e4970ccc17a8")
 	)
 	(embedded_fonts no)
-	(model "/home/nik/kDrive/Electronics/PCB_Projects/NiksKiCadLibrary/NiksKiCadLibrary.3dshapes/SO16.step"
+	(model "SO16.step"
 		(offset
 			(xyz 0 0 0)
 		)

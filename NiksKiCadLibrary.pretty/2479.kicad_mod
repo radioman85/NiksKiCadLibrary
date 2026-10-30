@@ -214,18 +214,8 @@
 		(uuid "79603aef-a209-495f-a903-c9285ed6cf48")
 	)
 	(embedded_fonts no)
+
 	(model "2479.stp"
-		(offset
-			(xyz 0 0 0)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz 0 0 0)
-		)
-	)
-	(model "/home/nik/kDrive/Electronics/PCB_Projects/NiksKiCadLibrary/NiksKiCadLibrary.3dshapes/2479.stp"
 		(offset
 			(xyz -8.3 -1.5 10.5)
 		)

@@ -21,10 +21,11 @@ NiksKiCadLibrary/
 ├── <DES>/<DES>.kicad_sym          # one symbol library per designator (26 exist)
 ├── NiksKiCadLibrary.pretty/       # single footprint library (*.kicad_mod)
 ├── NiksKiCadLibrary.3dshapes/     # 3D models, referenced by bare filename
-├── NiksKiCadLibrary.kicad_sym     # OBSOLETE monolith — kept as reference only.
-│                                  #   DO NOT add new parts here.
 └── TPSM86837RCGR/                 # vendor data — leave alone
 ```
+
+The old monolithic `NiksKiCadLibrary.kicad_sym` has been removed; the designator
+libraries are the only symbol libraries. Do not recreate it.
 
 The designator libraries are registered globally in KiCad as `Niks_<DES>` in
 `~/.var/app/org.kicad.KiCad/config/kicad/10.0/sym-lib-table`. The footprint
@@ -353,7 +354,8 @@ referenced by bare filename. Do not try to orient it — see
 - No duplicate part numbers; s-exprs are balanced.
 - The tool reported no `!` lines (a `!` line means something needed attention:
   a renamed footprint, a manual conversion, a missing model, or a symbol whose
-  footprint is not in the library).
+  footprint is not in the library) and exited 0 — an `ERROR:` line means a file
+  could not be processed at all and the run failed.
 - The generated footprint really parses in KiCad. Plot it with the CLI:
 
   ```bash
@@ -416,8 +418,8 @@ Before handoff:
 - `Origin` property holds the country of origin of this exact component, or is
   left unset (silently) because it could not be found (no guessing).
 - All touched files have balanced parentheses.
-- Only touched what was necessary; the monolith `NiksKiCadLibrary.kicad_sym`
-  is never modified.
+- Only touched what was necessary; the old monolith `NiksKiCadLibrary.kicad_sym`
+  stays deleted.
 - Reported to the user that KiCad must be restarted/reloaded to pick up the
   new parts.
 
@@ -425,7 +427,7 @@ Before handoff:
 
 - Do not invent part numbers, footprints, or electrical characteristics —
   copy them from the vendor files.
-- Do not modify the obsolete monolith; new parts only go into the designator
+- Do not re-create the removed monolith; new parts only go into the designator
   libraries.
 - Do not analyse, derive, or "fix" 3D model orientation (STEP geometry, axis
   mapping, rotation composition order, render-based silhouette measuring).

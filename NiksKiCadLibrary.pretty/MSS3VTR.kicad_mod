@@ -273,7 +273,7 @@
 		(uuid "342f0720-b6c9-4c54-b1e5-57608442fe48")
 	)
 	(embedded_fonts no)
-	(model "/home/nik/kDrive/Electronics/PCB_Projects/NiksKiCadLibrary/NiksKiCadLibrary.3dshapes/MSS3-V-T_R.stp"
+	(model "MSS3-V-T_R.stp"
 		(offset
 			(xyz 0 0 0)
 		)

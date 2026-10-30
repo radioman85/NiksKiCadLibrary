@@ -19,12 +19,22 @@ The source directory (a vendor/SnapEDA KiCad download) may contain:
     *.step/.stp    3D model(s) copied to NiksKiCadLibrary.3dshapes/
 
 Behaviour:
+  - KiCad 4/5 `(module ...)` footprints are converted to the modern format
+    before they are written (layers, stroke widths, `fp_arc` -> three points,
+    quoted pad numbers, `%R` -> `${REFERENCE}`, model offsets).  A footprint
+    with constructs the converter does not know is skipped with a `!` note so
+    it can be converted manually.
+  - Several footprint files sharing one internal name are named after their
+    source file instead of overwriting each other.
   - The symbol `Reference` property is set to the designator, and the
     `Footprint` property is pointed at "NiksKiCadLibrary:<footprint>".
   - 3D models are referenced by bare filename inside the footprint so KiCad
-    resolves them from the sibling .3dshapes folder.
+    resolves them from the sibling .3dshapes folder.  The model block keeps
+    neutral offset/rotation values; the user orients the model in KiCad.
   - A brand-new designator library is created and registered in the KiCad
     global sym-lib-table automatically.
+  - Symbols whose `Footprint` is not present in `.pretty` are reported with a
+    `!` note.
 
 Aisler.net (PCBA) parameters:
   Aisler auto-assigns parts on a 100% exact match of the MPN field. It accepts
@@ -46,6 +56,8 @@ Country of origin parameter:
   --origin sets the `Origin` property to the part's country of origin (ISO 3166
   country code, e.g. "CN", "MY", "TH", "US"), as listed on the distributor
   (DigiKey) product page or the datasheet/box.
+
+Exit status: 0 success, 1 if validation or any processing step failed.
 """
 
 from __future__ import annotations
@@ -109,6 +121,10 @@ FOOTPRINT_OPEN_RE = re.compile(r'\s*\(footprint\s+"?([^"\s()]+)"?([\s\S]*)')
 
 class ConfigError(Exception):
     pass
+
+
+class LegacyConversionError(ConfigError):
+    """Legacy footprint uses constructs that need a manual conversion."""
 
 
 # ---------------------------------------------------------------------------
@@ -437,7 +453,9 @@ def _legacy_child(child: str) -> str | None:
     """Convert one legacy footprint child; None = unsupported construct."""
     mt = HEAD_TOKEN_RE.match(child)
     head = (mt.group(1) if mt else "").lower()
-    if head in ("tedit", "tstamp"):
+    if head in ("tedit", "tstamp", "at"):
+        # `at` is the module's board placement in the legacy format; a library
+        # footprint has no placement, so it is dropped
         return ""
     if head == "fp_arc":
         ms = re.search(r'\(start\s+(-?[\d.]+)\s+(-?[\d.]+)\)', child)
@@ -516,10 +534,8 @@ def legacy_footprint_to_modern(text: str) -> tuple[str, str] | None:
     name = m.group(1)
     open_at = text.index("(")
     close_at = find_close(text, open_at)
-    inner = text[open_at + 1:close_at]
-    q_end = inner.index('"')
-    q_end2 = inner.index('"', q_end + 1)
-    rest = inner[q_end2 + 1:]
+    # skip the header: `(module NAME` (the name may be quoted or bare)
+    rest = text[m.end():close_at]
     parts = []
     for (s, e) in top_spans(rest):
         conv = _legacy_child(rest[s:e])
@@ -541,7 +557,7 @@ def process_footprint(ft_text: str) -> tuple[str, str]:
     if LEGACY_MODULE_RE.match(ft_text):
         conv = legacy_footprint_to_modern(ft_text)
         if conv is None:
-            raise ConfigError(
+            raise LegacyConversionError(
                 "legacy (module ...) footprint with constructs that need a manual conversion"
             )
         ft_text = conv[0]
@@ -654,11 +670,12 @@ def main() -> int:
         print(f"ERROR: invalid designator {des!r}", file=sys.stderr)
         return 1
 
+    if des not in KNOWN_DESIGNATORS:
+        print(f"  ! {des!r} is not a standard designator; creating/using it anyway")
+
     pretty = repo / "NiksKiCadLibrary.pretty"
     shapes = repo / "NiksKiCadLibrary.3dshapes"
     lib_path = repo / des / f"{des}.kicad_sym"
-    pretty.mkdir(parents=True, exist_ok=True)
-    shapes.mkdir(parents=True, exist_ok=True)
 
     syms = sorted(src.glob("*.kicad_sym"))
     fts = sorted(src.glob("*.kicad_mod"))
@@ -668,8 +685,9 @@ def main() -> int:
         print(f"ERROR: no .kicad_sym/.kicad_mod/.step files found in {src}", file=sys.stderr)
         return 1
 
-    if des not in KNOWN_DESIGNATORS:
-        print(f"  ! {des!r} is not a standard designator; creating/using it anyway")
+    pretty.mkdir(parents=True, exist_ok=True)
+    shapes.mkdir(parents=True, exist_ok=True)
+    errors = 0
 
     print(f"designator  : {des} ({KNOWN_DESIGNATORS.get(des, 'custom')})")
     print(f"symbol files: {[p.name for p in syms]}")
@@ -682,7 +700,12 @@ def main() -> int:
 
     # ---- symbols ---------------------------------------------------------
     for sf in syms:
-        forms = extract_symbol_forms(sf.read_text())
+        try:
+            forms = extract_symbol_forms(sf.read_text())
+        except (OSError, ConfigError) as exc:
+            print(f"ERROR: {sf.name}: {exc}", file=sys.stderr)
+            errors += 1
+            continue
         processed = []
         for form in forms:
             _, name = form_head(form)
@@ -710,7 +733,12 @@ def main() -> int:
             processed.append(
                 (name, form, aisler_changes + dk_changes + origin_changes)
             )
-        add_symbols_to_lib(lib_path, [(n, f) for n, f, _ in processed])
+        try:
+            add_symbols_to_lib(lib_path, [(n, f) for n, f, _ in processed])
+        except ConfigError as exc:
+            print(f"ERROR: {sf.name}: {exc}", file=sys.stderr)
+            errors += 1
+            continue
         added_symbols.extend((n, f) for n, f, _ in processed)
         for name, form, changes in processed:
             print(f"  symbol added: {name}")
@@ -742,8 +770,12 @@ def main() -> int:
     for ff in fts:
         try:
             form, ft_name = process_footprint(ff.read_text())
-        except ConfigError as exc:
-            print(f"  ! {ff.name}: {exc}")
+        except LegacyConversionError as exc:
+            print(f"  ! {ff.name}: {exc} - footprint skipped, convert it manually")
+            continue
+        except (ConfigError, OSError) as exc:
+            print(f"ERROR: {ff.name}: {exc}", file=sys.stderr)
+            errors += 1
             continue
         fp_items.append((ff, form, ft_name))
     name_count = {}
@@ -751,28 +783,32 @@ def main() -> int:
         name_count[nm] = name_count.get(nm, 0) + 1
 
     for (ff, form, ft_name) in fp_items:
-        if name_count.get(ft_name, 0) > 1 and ff.stem != ft_name:
-            form = re.sub(
-                r'^\(footprint\s+"[^"]*"', f'(footprint "{ff.stem}"', form, count=1
-            )
-            print(f"  ! {ff.name}: name {ft_name!r} is used by several files "
-                  f"-> using {ff.stem!r}")
-            ft_name = ff.stem
-        model = pick_model(ft_name, steps, args.model)
-        if model:
-            if not (shapes / model).exists():
-                shutil.copy2(next(s for s in steps if s.name == model), shapes / model)
-                print(f"  3D model copied: {shapes / model}")
+        try:
+            if name_count.get(ft_name, 0) > 1 and ff.stem != ft_name:
+                form = re.sub(
+                    r'^\(footprint\s+"[^"]*"', f'(footprint "{ff.stem}"', form, count=1
+                )
+                print(f"  ! {ff.name}: name {ft_name!r} is used by several files "
+                      f"-> using {ff.stem!r}")
+                ft_name = ff.stem
+            model = pick_model(ft_name, steps, args.model)
+            if model:
+                if not (shapes / model).exists():
+                    shutil.copy2(next(s for s in steps if s.name == model), shapes / model)
+                    print(f"  3D model copied: {shapes / model}")
+                else:
+                    print(f"  3D model exists: {shapes / model}")
+                form = attach_model(form, model)
             else:
-                print(f"  3D model exists: {shapes / model}")
-            form = attach_model(form, model)
-        else:
-            print(f"  ! {ft_name}: no matching 3D model; footprint left without model")
-        target = pretty / f"{ft_name}.kicad_mod"
-        if target.exists():
-            print(f"  ! footprint already exists, overwriting: {target}")
-        target.write_text(form + "\n")
-        print(f"  footprint written: {target.name}")
+                print(f"  ! {ft_name}: no matching 3D model; footprint left without model")
+            target = pretty / f"{ft_name}.kicad_mod"
+            if target.exists():
+                print(f"  ! footprint already exists, overwriting: {target}")
+            target.write_text(form + "\n")
+            print(f"  footprint written: {target.name}")
+        except (ConfigError, OSError) as exc:
+            print(f"ERROR: {ff.name}: {exc}", file=sys.stderr)
+            errors += 1
 
     # ---- any remaining 3D models ----------------------------------------
     for sp in steps:
@@ -806,6 +842,10 @@ def main() -> int:
         print(f"  {'OK ' if ok else 'ERR'} {t.relative_to(repo)}")
     if damaged:
         print("ERROR: unbalanced s-expr produced; inspect before committing", file=sys.stderr)
+        return 1
+    if errors:
+        print(f"ERROR: {errors} file(s) could not be processed; see messages above",
+              file=sys.stderr)
         return 1
 
     print()

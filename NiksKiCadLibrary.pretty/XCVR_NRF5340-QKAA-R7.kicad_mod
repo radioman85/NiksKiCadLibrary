@@ -2680,7 +2680,7 @@
 		(uuid "e9f90f37-7a73-45df-9709-0c13555c9b50")
 	)
 	(embedded_fonts no)
-	(model "C:/Users/z004xj9f/Downloads/NRF5340_QKAA_R7/NRF5340-QKAA-R7.step"
+	(model "NRF5340-QKAA-R7.step"
 		(offset
 			(xyz 0 0 0)
 		)

@@ -250,7 +250,7 @@
 		(uuid "0d068f50-0696-420c-afae-9b320416eb1f")
 	)
 	(embedded_fonts no)
-	(model "/home/nik/kDrive/Electronics/PCB_Projects/NiksKiCadLibrary/NiksKiCadLibrary.3dshapes/pxc_1803442_03_01_MCV-1-5-4-G-3-81_3D.stp"
+	(model "pxc_1803442_03_01_MCV-1-5-4-G-3-81_3D.stp"
 		(offset
 			(xyz -13.7 -3 0)
 		)

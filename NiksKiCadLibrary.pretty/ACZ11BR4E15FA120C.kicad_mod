@@ -471,7 +471,7 @@
 		(uuid "d45ff7b2-fc2a-46ac-b512-7ca67c9cf55e")
 	)
 	(embedded_fonts no)
-	(model "/home/nik/Downloads/LIB_ACZ11BR4E-15FA1-20C/ACZ11BR4E-15FA1-20C/3D/ACZ11BR4E-15FA1-20C.stp"
+	(model "ACZ11BR4E-15FA1-20C.stp"
 		(offset
 			(xyz 2.5 -3.5 7.2)
 		)

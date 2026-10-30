@@ -251,15 +251,5 @@
 			(xyz -0 -0 -0)
 		)
 	)
-	(model "/Users/niklasroth/Downloads/LIB_RQ6E045RPTR/RQ6E045RPTR/3D/RQ6E045RPTR.stp"
-		(offset
-			(xyz 0 0 0)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz 0 0 0)
-		)
-	)
+
 )

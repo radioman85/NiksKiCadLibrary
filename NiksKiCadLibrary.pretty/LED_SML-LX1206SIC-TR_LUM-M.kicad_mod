@@ -309,7 +309,7 @@
 		)
 	)
 	(embedded_fonts no)
-	(model "/Users/niklasroth/Downloads/SML_LX1206SIC_TR (1)/LED_SML-LX1206SIC-TR_LUM.step"
+	(model "LED_SML-LX1206SIC-TR_LUM.step"
 		(offset
 			(xyz 0 0 0)
 		)

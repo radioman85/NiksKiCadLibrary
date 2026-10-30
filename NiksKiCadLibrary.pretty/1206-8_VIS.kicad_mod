@@ -366,7 +366,7 @@
 		(uuid "4cb8d5b2-d7d0-442b-b45c-ba00a4762ca8")
 	)
 	(embedded_fonts no)
-	(model "/home/nik/kDrive/Electronics/PCB_Projects/NiksKiCadLibrary/NiksKiCadLibrary.3dshapes/SI5515CDC-T1-GE3.stp"
+	(model "SI5515CDC-T1-GE3.stp"
 		(offset
 			(xyz 0 0 0)
 		)

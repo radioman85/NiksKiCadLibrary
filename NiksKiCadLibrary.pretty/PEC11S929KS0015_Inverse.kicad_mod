@@ -298,7 +298,7 @@
 		(uuid "e0459b1c-7efc-4ca2-952e-90ee7d51beb2")
 	)
 	(embedded_fonts no)
-	(model "/home/nik/kDrive/Electronics/PCB_Projects/NiksKiCadLibrary/NiksKiCadLibrary.3dshapes/PEC11S-929K.stp"
+	(model "PEC11S-929K.stp"
 		(offset
 			(xyz 1.7 3.9 1.2)
 		)

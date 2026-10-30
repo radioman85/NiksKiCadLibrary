@@ -564,7 +564,7 @@
 		(uuid "cf7aa1e0-3f4f-4d7b-abae-cb0ba0898829")
 	)
 	(embedded_fonts no)
-	(model "/Users/niklasroth/Downloads/SFV24R_4STBE1HLF/SFV24R-4STBE1HLF.step"
+	(model "SFV24R-4STBE1HLF.step"
 		(offset
 			(xyz 0 0 0)
 		)

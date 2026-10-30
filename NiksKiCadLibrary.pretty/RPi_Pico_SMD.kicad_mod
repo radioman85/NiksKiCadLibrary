@@ -614,7 +614,7 @@
 		(layers "F.Cu" "F.Mask")
 		(uuid "13d43e4c-53c6-4871-9334-1c0f8ee24106")
 	)
-	(model "C:/Users/ncara/OneDrive/IoT/Tools/KiCad/RP-Pico Libraries/Pico.wrl"
+	(model "Pico.wrl"
 		(offset
 			(xyz 0 0 0)
 		)

@@ -344,7 +344,7 @@
 		(uuid "59b089d9-4d60-4adf-8231-9853c9c1e3d8")
 	)
 	(embedded_fonts no)
-	(model "/home/nik/kDrive/Electronics/PCB_Projects/NiksKiCadLibrary/NiksKiCadLibrary.3dshapes/SON_B1-APUR_STM.step"
+	(model "SON_B1-APUR_STM.step"
 		(offset
 			(xyz 0 0 0)
 		)
