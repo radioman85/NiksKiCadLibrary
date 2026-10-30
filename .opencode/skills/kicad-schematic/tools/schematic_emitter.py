@@ -126,9 +126,9 @@ def build(design, parts, libfiles, libs_dir, opts):
     header.append(f'    (rev "{tb["rev"]}")')
     header.append(f'    (company "{tb["company"]}")')
     comments = tb.get("comments", [])
-    for i, (n, t) in enumerate(comments):
-        close = ")" if i == len(comments) - 1 else ""
-        header.append(f'    (comment {n} "{t}"){close}')
+    for n, t in comments:
+        header.append(f'    (comment {n} "{t}")')
+    header.append('  )')
     parts_out = ["\n".join(header)]
 
     for text, at, seed_key in opts.get("texts", []):

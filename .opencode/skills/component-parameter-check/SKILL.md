@@ -103,7 +103,8 @@ Options:
 - `--ignore-origin` — do not require the `Origin` property.
 
 The exit status is the number of components that failed a required check
-(0 = everything is in order). The report marks each component per column as
+(0 = everything is in order); an input that cannot be read counts as one
+failure. The report marks each component per column as
 `OK`, `WARN`, or `FAIL`:
 
 - **Aisler** — `OK` = exact `MPN` present, or `Value` is a plausible Smart

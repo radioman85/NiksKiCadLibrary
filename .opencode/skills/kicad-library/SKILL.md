@@ -434,3 +434,33 @@ Before handoff:
   Copy the model, reference it by bare filename, and let the user orient it.
 - File parsing (balanced parens) is not a substitute for opening the part in
   KiCad and visually checking pins and units.
+
+## Git workflow (commit / push)
+
+Adding a part to the library **does not** imply committing or pushing changes.
+The skill's job is to edit library files; version control is a separate,
+explicit step.
+
+- **Do not commit or push** after adding a part unless the user explicitly asks
+  for it.
+- When the user **does** explicitly request a commit and/or push:
+  1. **Check git state first.** Run `git status` (or the equivalent read-only
+     git tool) in the library root and review what is staged, modified, and
+     untracked.
+  2. **Stage only task-specific changes.** Add only the files that were
+     modified as part of the current task (the designator `.kicad_sym` that
+     received the new symbol, the footprint `.kicad_mod`, the copied `.step` /
+     `.stp` model, and `sym-lib-table` if a new designator library was
+     created). Do not blanket-stage every modified file.
+  3. **Verify the staged set matches the task.** Before committing, confirm
+     the staged diff corresponds to what was just added — no unrelated edits,
+     no stray files, no vendored data (e.g. `TPSM86837RCGR/` must stay out).
+  4. **Commit with a concise message** that names the part(s) added and the
+     designator library, e.g. `Add ASPI-0628-3R9M-T1 inductor (L)`.
+  5. **Push only if asked**, and only the branch the user is working on.
+     Report the remote URL and branch so the user can confirm.
+- If the user asks to commit but git state shows unrelated changes, tell them
+  what those changes are and ask whether to include them — never auto-stage
+  unrelated files.
+- Preserve unrelated changes in the working tree at all times; the commit
+  scope is the task, not the entire working tree.

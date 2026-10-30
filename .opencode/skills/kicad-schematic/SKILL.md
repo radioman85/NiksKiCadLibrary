@@ -57,8 +57,12 @@ as an argument, so they work on any project:
   layout for instances/wires/junctions, per-lib property overrides so output
   stays byte-identical to the reference generator).
 - `templates/lib_symbols/*.sym` — verbatim KiCad library symbol extracts
-  (standard parts plus power/flag symbols) used to build embedded
-  `lib_symbols` sections when generating schematics by direct file editing.
+  (standard parts plus power/flag symbols) used as **building blocks** by the
+  IR adapter and the schematic emitter when generating `.kicad_sch` files by
+  direct file editing. These templates are internal skill resources for the
+  emitter pipeline; they are **not** an approved production component source.
+  Production schematics must still source all parts exclusively from
+  `NiksKiCadLibrary` (see "Component sourcing" below).
 
 For a new project, generate its golden netlist first: `verify_schematic.sh
 --update-golden <schematic.kicad_sch>`, then run plain `verify_schematic.sh`
@@ -69,7 +73,9 @@ for regression checks.
 - **Symbol** — a logical component such as a resistor, capacitor, MCU, or connector.
 - **Footprint** — the physical PCB land pattern associated with a symbol.
 - **Net** — an electrically connected set of pins and connections.
-- **Lib identifier** — `"LibraryNickname:SymbolName"` (e.g. `"Device:R"`).
+- **Lib identifier** — `"LibraryNickname:SymbolName"` (e.g. `"Device:R"` as a
+  **format illustration only** — see "Component sourcing" below for what
+  library identifiers are actually permitted in production schematics).
 - **Reference designator** — instance label such as `R1`, `C3`, or `U2`.
 - **Pin** — logical connection point identified by its pin number.
 - **UUID** — unique identifier used to identify schematic objects and instances.
@@ -139,20 +145,41 @@ A placed symbol refers to its library identifier:
 (lib_id "Device:R")
 ```
 
-The corresponding symbol definition must exist in `lib_symbols`.
-
-Prefer standard KiCad library symbols such as:
-
-```text
-Device:R
-Device:C
-Device:LED
-Connector_Generic:Conn_01x02
-```
-
-Use custom symbol definitions only when necessary.
+The snippet above is a **format illustration only** — it shows the syntax of
+a `lib_id` entry, not a permission to source production parts from the
+standard KiCad `Device` library. See "Component sourcing" below for the
+actual sourcing rule. The corresponding symbol definition must still exist
+in `lib_symbols` regardless of which identifier is used.
 
 Keep the `Footprint` property empty unless a specific footprint is known and intentionally assigned.
+
+### Component sourcing: NiksKiCadLibrary only
+
+Schematic components must be sourced **exclusively** from the user's own `NiksKiCadLibrary`, hosted at `git@github.com:radioman85/NiksKiCadLibrary.git`. Do **not** fall back to standard KiCad libraries, system libraries, or other project libraries (e.g. `Device:R`, `Connector_Generic:*`) for schematic parts.
+
+Before using any component, verify that `NiksKiCadLibrary` is actually present and available in the current workspace:
+
+1. Confirm `.gitmodules` contains a submodule entry pointing to `git@github.com:radioman85/NiksKiCadLibrary.git`.
+2. Confirm the submodule directory is initialized and populated (the expected files/folders exist inside it, not just an empty mount).
+
+If the submodule is missing, not initialized, or a required part does not exist in `NiksKiCadLibrary`:
+
+- Do **not** fall back to another library.
+- Do **not** invent a library identifier.
+- Do **not** create an ad hoc symbol or inline definition to paper over the gap.
+
+Instead, hand off to the `kicad-library` skill for library integration / part addition. If `kicad-library` cannot resolve the missing prerequisite, report the gap back (naming the missing part and the state of the submodule) rather than silently working around it.
+
+### Library registration: project-local only
+
+All symbol and footprint libraries a project uses **must be registered as project-specific libraries**, never as global / user / system libraries. A project must carry its own `sym-lib-table` (for symbols) and/or `fp-lib-table` (for footprints) alongside the `.kicad_pro`, with every library entry using `${KIPRJMOD}`-relative paths. This keeps the project self-contained and reproducible on any machine.
+
+- If the project relies on `NiksKiCadLibrary`, check out the submodule (e.g. `Libraries/NiksKiCadLibrary`) and point the table entries at it via `${KIPRJMOD}/Libraries/NiksKiCadLibrary/...`.
+- If any library the project needs is currently registered only at the global / user / system level, **remove that global entry from the project's effective configuration** and replace it with an explicit project-local entry in `sym-lib-table` / `fp-lib-table`. Do **not** edit the user's machine-wide / global KiCad library tables (`~/.config/kicad/<version>/sym-lib-table` etc.) — those belong to the user's environment, not the project.
+- Before placing a symbol or assigning a footprint, verify that the owning library is listed in the project-local table with a `${KIPRJMOD}` path. A symbol that happens to resolve because the library is installed globally is **not** acceptable; the table must declare it.
+- Footprint libraries follow the same rule via `fp-lib-table` — every `.kicad_mod` source must be a project-local entry, typically via submodule, using `${KIPRJMOD}` paths.
+
+**Verification:** open the project's `sym-lib-table` (and `fp-lib-table`, if present) and confirm every `(lib ...)` entry uses a `(uri "${KIPRJMOD}/...")` path, and that the referenced directories exist (submodules checked out). Reject the setup if any entry points outside `${KIPRJMOD}` or relies on a globally installed library.
 
 ## Placed symbol instances
 
@@ -188,6 +215,11 @@ Example:
   )
 )
 ```
+
+The `Device:R` identifier above is a **format illustration only** — it shows
+the structure of a placed symbol instance, not a permission to use standard
+KiCad libraries in production schematics. Actual library identifiers must
+come from `NiksKiCadLibrary` (see "Component sourcing" below).
 
 Preserve the relationship between library pins, instance pin UUIDs, and project instances.
 
@@ -277,9 +309,9 @@ Do not unnecessarily rewrite or regenerate an existing schematic.
 
 ### 3. Determine the symbol list
 
-Use standard KiCad libraries where possible.
+All symbols must come from `NiksKiCadLibrary`. Before placing anything, verify the submodule is present and initialized (see "Component sourcing: NiksKiCadLibrary only" above). If a needed part is absent, hand off to the `kicad-library` skill rather than inventing a library identifier or falling back to another library.
 
-Verify that the requested symbol actually exists before inventing a library identifier.
+Verify that the requested symbol actually exists in `NiksKiCadLibrary` before using its library identifier.
 
 ### 4. Place symbols
 

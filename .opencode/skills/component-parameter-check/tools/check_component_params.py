@@ -28,7 +28,8 @@ Arguments may be files or directories; directories are searched recursively for
 *.kicad_sch and *.kicad_pcb.
 
 Output is one line per component plus a summary. The exit status is the number
-of components that failed a required check (0 = everything is in order).
+of components that failed a required check (0 = everything is in order); an
+input that cannot be read counts as one failure.
 """
 
 from __future__ import annotations
@@ -118,11 +119,7 @@ class _Parser:
 
 
 def parse_file(path: Path) -> list:
-    try:
-        text = path.read_text(encoding="utf-8", errors="replace")
-    except OSError as exc:
-        print(f"  ERROR: cannot read {path}: {exc}", file=sys.stderr)
-        return []
+    text = path.read_text(encoding="utf-8", errors="replace")
     return _Parser(tokenize(text)).parse()
 
 
@@ -310,10 +307,16 @@ symbol files (*.kicad_sym) are not scanned.
         return 1
 
     failures = 0
+    unreadable = 0
     counts = {"ok": 0, "warn": 0, "fail": 0}
 
     for path in files:
-        comps = extract_components(path)
+        try:
+            comps = extract_components(path)
+        except OSError as exc:
+            print(f"ERROR: cannot read {path}: {exc}", file=sys.stderr)
+            unreadable += 1
+            continue
         if not comps:
             continue
         print(f"{path}:")
@@ -346,7 +349,9 @@ symbol files (*.kicad_sym) are not scanned.
     print(f"  warn: {counts.get('warn', 0)}")
     print(f"  fail: {counts.get('fail', 0)}")
     print(f"  failing components: {failures}")
-    return failures
+    if unreadable:
+        print(f"  unreadable inputs: {unreadable}")
+    return failures + unreadable
 
 
 if __name__ == "__main__":

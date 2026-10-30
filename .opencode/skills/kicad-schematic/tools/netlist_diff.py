@@ -8,8 +8,11 @@ essence: net name -> sorted list of "ref:pin" members.
 Usage:
     netlist_diff.py <netlist.xml> <golden>       compare; exit 0 same / 1 diff
     netlist_diff.py --update <netlist.xml> <golden>   (re)write golden
+
+Exit status: 0 same, 1 different, 2 usage error or unreadable input.
 """
 
+import argparse
 import sys
 import xml.etree.ElementTree as ET
 
@@ -66,22 +69,47 @@ def write_golden(path, nets):
 
 
 def main():
-    update = "--update" in sys.argv
-    args = [a for a in sys.argv[1:] if a != "--update"]
-    if len(args) < 2:
-        print(__doc__)
-        return 2
-    xml, golden = args[:2]
+    parser = argparse.ArgumentParser(
+        description=(
+            "Compare a kicadxml netlist export against a golden netlist "
+            "(volatile details like uuids/timestamps are normalized away)."
+        ),
+        epilog="""\
+Examples:
+
+  Compare against the golden netlist (0 = same, 1 = different):
+    netlist_diff.py board.netlist.xml board.netlist.golden
+
+  (Re)write the golden from the current netlist:
+    netlist_diff.py --update board.netlist.xml board.netlist.golden
+
+Exit status: 0 same, 1 different, 2 usage error or unreadable input.
+""",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    parser.add_argument("--update", action="store_true",
+                        help="(re)write the golden file instead of comparing")
+    parser.add_argument("netlist", help="kicadxml netlist export to check")
+    parser.add_argument("golden", help="golden netlist file")
+    args = parser.parse_args()
+    xml, golden = args.netlist, args.golden
     try:
         cur = normalize(xml)
     except ET.ParseError as e:
-        print(f"ERROR: could not parse netlist XML {xml}: {e}")
+        print(f"ERROR: could not parse netlist XML {xml}: {e}", file=sys.stderr)
         return 2
-    if update:
+    except OSError as e:
+        print(f"ERROR: cannot read netlist {xml}: {e}", file=sys.stderr)
+        return 2
+    if args.update:
         write_golden(golden, cur)
         print(f"Golden netlist updated: {golden} ({len(cur)} nets)")
         return 0
-    ref = load_golden(golden)
+    try:
+        ref = load_golden(golden)
+    except OSError as e:
+        print(f"ERROR: cannot read golden {golden}: {e}", file=sys.stderr)
+        return 2
     only_ref = sorted(set(ref) - set(cur))
     only_cur = sorted(set(cur) - set(ref))
     diffs = []

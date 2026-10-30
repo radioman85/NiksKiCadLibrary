@@ -16,6 +16,7 @@ Checks the rules that were verified empirically against kicad-cli 10.0.5:
 Exit code 0 = clean, 1 = errors, 2 = warnings only.
 """
 
+import argparse
 import sys
 
 
@@ -152,10 +153,30 @@ def on_segment(p, a, b, strict=False):
 
 
 def main():
-    if len(sys.argv) < 2:
-        print("usage: lint_schematic.py FILE.kicad_sch", file=sys.stderr)
+    parser = argparse.ArgumentParser(
+        description=(
+            "Static structural lint for a generated KiCad schematic: "
+            "grid alignment, wire connectivity, junctions, and undriven "
+            "power nets."
+        ),
+        epilog="""\
+Examples:
+
+  Lint one schematic:
+    lint_schematic.py board.kicad_sch
+
+Exit status: 0 clean, 1 errors, 2 warnings only.
+""",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    parser.add_argument("file", help="schematic file to lint (*.kicad_sch)")
+    args = parser.parse_args()
+    try:
+        with open(args.file, encoding="utf-8") as fh:
+            text = fh.read()
+    except OSError as exc:
+        print(f"ERROR: cannot read {args.file}: {exc}", file=sys.stderr)
         return 1
-    text = open(sys.argv[1], encoding="utf-8").read()
     tree = parse(text)
 
     # ---- lib symbols: name -> {pin_num: (type, (x, y))} ----
