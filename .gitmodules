@@ -1,0 +1,3 @@
+[submodule "my-skills"]
+	path = my-skills
+	url = git@gitlab.com:nikicello/niks_ai_skills.git
