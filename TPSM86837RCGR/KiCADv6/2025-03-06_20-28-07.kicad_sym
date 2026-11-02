@@ -6,7 +6,7 @@
     (property "Value" "TPSM86837RCGR" (id 1) (at 0 0 0)
       (effects (font (size 1.524 1.524)))
     )
-    (property "Footprint" "RCG0019A-MFG" (id 2) (at 0 0 0)
+    (property "Footprint" "Niks_ModulesDisplays:RCG0019A-MFG" (id 2) (at 0 0 0)
       (effects (font (size 1.27 1.27) italic) hide)
     )
     (property "Datasheet" "TPSM86837RCGR" (id 3) (at 0 0 0)
@@ -133,4 +133,3 @@
     )
   )
 )
-

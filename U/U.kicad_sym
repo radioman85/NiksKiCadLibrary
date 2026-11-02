@@ -33,7 +33,7 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:SOP65P490X110-8N"
+		(property "Footprint" "Niks_Semiconductors:SOP65P490X110-8N"
 			(at 26.67 -94.92 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -355,7 +355,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:80-TQFP_12.0X12.0X1.6_CYP"
+		(property "Footprint" "Niks_Semiconductors:80-TQFP_12.0X12.0X1.6_CYP"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2043,7 +2043,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:DGS10_TEX"
+		(property "Footprint" "Niks_Semiconductors:DGS10_TEX"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2428,7 +2428,7 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:SOIC-16-SOIC127P600X175-16N"
+		(property "Footprint" "Niks_Semiconductors:SOIC-16-SOIC127P600X175-16N"
 			(at 5.08 -43.434 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2913,7 +2913,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:SOIC-16"
+		(property "Footprint" "Niks_Semiconductors:SOIC-16"
 			(at 20.32 -1.524 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3473,7 +3473,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:SO-8L SOIC127P600X175-8N"
+		(property "Footprint" "Niks_Semiconductors:SO-8L SOIC127P600X175-8N"
 			(at 34.29 2.54 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3807,7 +3807,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:SO-8L SOIC127P600X175-8N"
+		(property "Footprint" "Niks_Semiconductors:SO-8L SOIC127P600X175-8N"
 			(at 21.59 -10.16 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4075,7 +4075,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:VFSOP8_2P1X2P4_ONS"
+		(property "Footprint" "Niks_Semiconductors:VFSOP8_2P1X2P4_ONS"
 			(at 15.24 14.224 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4393,7 +4393,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:XCVR_NRF5340-QKAA-R7"
+		(property "Footprint" "Niks_Semiconductors:XCVR_NRF5340-QKAA-R7"
 			(at 24.13 15.494 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6666,7 +6666,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:IC_NRF7002-QFAA-R"
+		(property "Footprint" "Niks_Semiconductors:IC_NRF7002-QFAA-R"
 			(at 27.94 2.54 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7707,7 +7707,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:RPi_Pico_SMD"
+		(property "Footprint" "Niks_ModulesDisplays:RPi_Pico_SMD"
 			(at 15.24 -15.24 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8636,7 +8636,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:RPi_Pico_W_SMD"
+		(property "Footprint" "Niks_ModulesDisplays:RPi_Pico_W_SMD"
 			(at 15.24 -15.24 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9510,7 +9510,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:SON_B1-APUR_STM"
+		(property "Footprint" "Niks_Semiconductors:SON_B1-APUR_STM"
 			(at -5.08 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9856,7 +9856,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:QFN28_6X6_SEM"
+		(property "Footprint" "Niks_Semiconductors:QFN28_6X6_SEM"
 			(at -3.81 8.89 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10614,7 +10614,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:SO16_TOS"
+		(property "Footprint" "Niks_Semiconductors:SO16_TOS"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12288,7 +12288,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:U_TPS65987DDHRSHR"
+		(property "Footprint" "Niks_Semiconductors:U_TPS65987DDHRSHR"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13841,7 +13841,7 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:SOT95P280X145-6N"
+		(property "Footprint" "Niks_Semiconductors:SOT95P280X145-6N"
 			(at 21.59 -94.92 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14186,7 +14186,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:TSB622IQ3T"
+		(property "Footprint" "Niks_Semiconductors:TSB622IQ3T"
 			(at 20.32 4.826 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14607,7 +14607,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:Analog_KS-4"
+		(property "Footprint" "Niks_General:Analog_KS-4"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14777,7 +14777,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:nRF7002-EB"
+		(property "Footprint" "Niks_ModulesDisplays:nRF7002-EB"
 			(at 21.082 8.128 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15158,7 +15158,7 @@
     (property "Value" "ADA4528-2ARMZ-R7" (at 26.67 5.08 0)
       (effects (font (size 1.27 1.27)) (justify left top))
     )
-    (property "Footprint" "NiksKiCadLibrary:SOP65P490X110-8N" (at 26.67 -94.92 0)
+    (property "Footprint" "Niks_Semiconductors:SOP65P490X110-8N" (at 26.67 -94.92 0)
       (effects (font (size 1.27 1.27)) (justify left top) hide)
     )
     (property "Datasheet" "https://componentsearchengine.com/Datasheets/1/ADA4528-2ARMZ-R7.pdf" (at 26.67 -194.92 0)

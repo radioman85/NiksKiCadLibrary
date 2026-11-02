@@ -33,7 +33,7 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:IND_ASPI-0628-3R9M-T1"
+		(property "Footprint" "Niks_General:IND_ASPI-0628-3R9M-T1"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)

@@ -1,0 +1,8 @@
+(fp_lib_table
+  (version 7)
+  (lib (name Niks_General)(type KiCad)(uri Niks_General.pretty)(options "")(descr ""))
+  (lib (name Niks_Connectors)(type KiCad)(uri Niks_Connectors.pretty)(options "")(descr ""))
+  (lib (name Niks_Semiconductors)(type KiCad)(uri Niks_Semiconductors.pretty)(options "")(descr ""))
+  (lib (name Niks_Electromechanical)(type KiCad)(uri Niks_Electromechanical.pretty)(options "")(descr ""))
+  (lib (name Niks_ModulesDisplays)(type KiCad)(uri Niks_ModulesDisplays.pretty)(options "")(descr ""))
+)

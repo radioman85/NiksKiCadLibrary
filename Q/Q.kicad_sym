@@ -34,7 +34,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:SOT-23"
+		(property "Footprint" "Niks_Semiconductors:SOT-23"
 			(at 5.08 -1.905 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -391,7 +391,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:QH8KC5TCR"
+		(property "Footprint" "Niks_Semiconductors:QH8KC5TCR"
 			(at 16.51 13.97 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1369,7 +1369,7 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:SOT95P280X100-6N"
+		(property "Footprint" "Niks_Semiconductors:SOT95P280X100-6N"
 			(at 21.59 -94.92 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1824,7 +1824,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:1206-8_VIS"
+		(property "Footprint" "Niks_Semiconductors:1206-8_VIS"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)

@@ -30,7 +30,7 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:LTSTE563CEGBW"
+		(property "Footprint" "Niks_Semiconductors:LTSTE563CEGBW"
 			(at 0.254 -16.256 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -599,7 +599,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:LED_SMLP36_ROM"
+		(property "Footprint" "Niks_Semiconductors:LED_SMLP36_ROM"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1399,7 +1399,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:LED_SML-LX1206SIC-TR_LUM"
+		(property "Footprint" "Niks_Semiconductors:LED_SML-LX1206SIC-TR_LUM"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)

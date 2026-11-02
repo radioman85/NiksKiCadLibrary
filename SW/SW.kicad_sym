@@ -30,7 +30,7 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:ACZ11BR4E15FA120C"
+		(property "Footprint" "Niks_Electromechanical:ACZ11BR4E15FA120C"
 			(at 21.59 -89.84 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -331,7 +331,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:SW_B3U-3100P_OMR"
+		(property "Footprint" "Niks_Electromechanical:SW_B3U-3100P_OMR"
 			(at 18.034 22.86 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -665,7 +665,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:SW_Push_1P1T_NO_CK_KSC7xxJ"
+		(property "Footprint" "Niks_Electromechanical:SW_Push_1P1T_NO_CK_KSC7xxJ"
 			(at 5.334 -6.35 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -859,7 +859,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:MSS3VTR"
+		(property "Footprint" "Niks_Electromechanical:MSS3VTR"
 			(at 1.27 10.16 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1216,7 +1216,7 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:MSS6VTR"
+		(property "Footprint" "Niks_Electromechanical:MSS6VTR"
 			(at 21.59 -84.76 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1722,7 +1722,7 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:PEC11S929KS0015"
+		(property "Footprint" "Niks_Electromechanical:PEC11S929KS0015"
 			(at 43.688 -4.064 0)
 			(show_name no)
 			(do_not_autoplace no)

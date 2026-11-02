@@ -9,7 +9,7 @@
 		(property "Value" "OLED 0.96 128x64 I2C" (at 0 -1.27 0)
 			(effects (font (size 1.27 1.27)))
 		)
-		(property "Footprint" "NiksKiCadLibrary:OLED SSD1306 128x64" (at 0 6.35 0)
+		(property "Footprint" "Niks_ModulesDisplays:OLED SSD1306 128x64" (at 0 6.35 0)
 			(effects (font (size 1.27 1.27)) hide)
 		)
 		(property "Datasheet" "" (at 0 6.35 0)

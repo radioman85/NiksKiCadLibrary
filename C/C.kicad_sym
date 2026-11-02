@@ -36,7 +36,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:C_0603_1608Metric"
+		(property "Footprint" "Niks_General:C_0603_1608Metric"
 			(at 0.9652 -3.81 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -235,7 +235,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:C_Pol_2917"
+		(property "Footprint" "Niks_General:C_Pol_2917"
 			(at 0.9652 -3.81 0)
 			(show_name no)
 			(do_not_autoplace no)

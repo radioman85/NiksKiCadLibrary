@@ -31,7 +31,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:CONN_1803442"
+		(property "Footprint" "Niks_Connectors:CONN_1803442"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -445,7 +445,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:PHOENIX_1844785"
+		(property "Footprint" "Niks_Connectors:PHOENIX_1844785"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1032,7 +1032,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:CONN12_713-1426_037-000_WAG"
+		(property "Footprint" "Niks_Connectors:CONN12_713-1426_037-000_WAG"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)

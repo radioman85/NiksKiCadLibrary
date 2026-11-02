@@ -28,7 +28,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:SolderPad"
+		(property "Footprint" "Niks_General:SolderPad"
 			(at -0.254 5.334 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -128,7 +128,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:TP_3Point"
+		(property "Footprint" "Niks_General:TP_3Point"
 			(at 3.81 6.35 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -312,7 +312,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:TP_2Point"
+		(property "Footprint" "Niks_General:TP_2Point"
 			(at 3.81 6.35 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -442,7 +442,7 @@
 				)
 			)
 		)
-		(property "Footprint" "NiksKiCadLibrary:TestPointSimpleSMD"
+		(property "Footprint" "Niks_General:TestPointSimpleSMD"
 			(at 5.08 0 0)
 			(show_name no)
 			(do_not_autoplace no)
