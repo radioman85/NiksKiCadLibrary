@@ -14607,7 +14607,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Niks_General:Analog_KS-4"
+		(property "Footprint" "Niks_Semiconductors:Analog_KS-4"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)

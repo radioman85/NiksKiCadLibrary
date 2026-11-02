@@ -34,7 +34,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Niks_General:R_0603_1608Metric"
+		(property "Footprint" "Niks_General:R_C_0603_1608Metric"
 			(at -1.778 0 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -78,7 +78,7 @@
 				)
 			)
 		)
-		(property "ki_fp_filters" "R_*"
+		(property "ki_fp_filters" "R_C_*"
 			(at 0 0 0)
 			(show_name no)
 			(do_not_autoplace no)

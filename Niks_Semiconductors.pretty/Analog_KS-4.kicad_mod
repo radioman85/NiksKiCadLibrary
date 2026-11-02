@@ -216,8 +216,7 @@
 		(roundrect_rratio 0.25)
 		(uuid "e0553567-593c-4e62-aaf7-178881853023")
 	)
-	(embedded_fonts no))
-
+	(embedded_fonts no)
 	(model "Analog_KS-4.step"
 		(offset (xyz 0 0 0))
 		(scale (xyz 1 1 1))
