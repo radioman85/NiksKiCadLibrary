@@ -2271,7 +2271,7 @@
 					)
 				)
 			)
-			(pin power_out line
+			(pin power_in line
 				(at 29.21 -16.51 90)
 				(length 2.54)
 				(name "AGND"
@@ -2379,7 +2379,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin bidirectional line
 				(at 22.86 -16.51 90)
 				(length 2.54)
 				(name "VREFIO"
