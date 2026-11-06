@@ -105,6 +105,7 @@
 		(at 0 2.5)
 		(size 1.8 1.8)
 		(layers "F.Cu" "F.Mask" "F.Paste")
+		(zone_connect 2)
 		(uuid "76d14581-b963-42d9-bedf-030ce5be9135")
 	)
 	(embedded_fonts no)

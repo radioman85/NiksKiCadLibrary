@@ -567,7 +567,7 @@
 		(uuid "da371305-c003-4b31-bff6-abaa5aa35133")
 	)
 	(zone
-		(layer "F.Cu")
+		(layers "*.Cu")
 		(uuid "292d6867-b187-4009-bbe0-1e614fc0996f")
 		(hatch edge 0.5)
 		(connect_pads
