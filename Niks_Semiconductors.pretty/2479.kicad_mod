@@ -215,7 +215,7 @@
 	)
 	(embedded_fonts no)
 
-	(model "2479.stp"
+	(model "../NiksKiCadLibrary.3dshapes/2479.stp"
 		(offset
 			(xyz -8.3 -1.5 10.5)
 		)

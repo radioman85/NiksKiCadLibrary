@@ -2680,7 +2680,7 @@
 		(uuid "e9f90f37-7a73-45df-9709-0c13555c9b50")
 	)
 	(embedded_fonts no)
-	(model "NRF5340-QKAA-R7.step"
+	(model "../NiksKiCadLibrary.3dshapes/NRF5340-QKAA-R7.step"
 		(offset
 			(xyz 0 0 0)
 		)

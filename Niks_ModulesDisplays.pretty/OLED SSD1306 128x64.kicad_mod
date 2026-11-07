@@ -232,7 +232,7 @@
 		(uuid "fae0a88a-c034-424c-96a9-e61882cf3532")
 	)
 	(embedded_fonts no)
-	(model "OLED 128x64.STP"
+	(model "../NiksKiCadLibrary.3dshapes/OLED 128x64.STP"
 		(offset
 			(xyz 34.55 3.39 3.5)
 		)

@@ -460,7 +460,7 @@
 		(uuid "0f36596b-7d31-472e-902a-f775b807f2cb")
 	)
 	(embedded_fonts no)
-	(model "nRF52840-QFAA-F-R7.stp"
+	(model "../NiksKiCadLibrary.3dshapes/nRF52840-QFAA-F-R7.stp"
 		(offset
 			(xyz 0 0 0)
 		)

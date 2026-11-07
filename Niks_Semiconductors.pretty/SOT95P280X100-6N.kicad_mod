@@ -240,7 +240,7 @@
 		(uuid "e55986ac-281d-4b5c-9a20-a87b403b1c65")
 	)
 	(embedded_fonts no)
-	(model "RQ6E045RPTR.stp"
+	(model "../NiksKiCadLibrary.3dshapes/RQ6E045RPTR.stp"
 		(offset
 			(xyz 0 0 0)
 		)

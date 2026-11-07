@@ -234,7 +234,7 @@
 		(layers "F.Cu" "F.Paste" "F.Mask")
 		(uuid "5f34cb67-9ffd-46f2-933c-f5e78365aacd")
 	)
-	(model "LTST-E563CEGBW.stp"
+	(model "../NiksKiCadLibrary.3dshapes/LTST-E563CEGBW.stp"
 		(offset
 			(xyz 0 0 0)
 		)

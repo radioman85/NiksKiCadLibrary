@@ -309,7 +309,7 @@
 		)
 	)
 	(embedded_fonts no)
-	(model "LED_SML-LX1206SIC-TR_LUM.step"
+	(model "../NiksKiCadLibrary.3dshapes/LED_SML-LX1206SIC-TR_LUM.step"
 		(offset
 			(xyz 0 0 0)
 		)

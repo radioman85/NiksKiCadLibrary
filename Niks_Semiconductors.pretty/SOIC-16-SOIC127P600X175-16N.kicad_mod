@@ -59,7 +59,7 @@
   (pad "14" smd rect (at 2.712 -1.905 90) (size 0.65 1.525) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp f5a87a97-fd78-453c-be5a-1ac76e5f36aa))
   (pad "15" smd rect (at 2.712 -3.175 90) (size 0.65 1.525) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 045adafe-6dfa-4a9b-9f78-ff17b422771b))
   (pad "16" smd rect (at 2.712 -4.445 90) (size 0.65 1.525) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 328054d1-43ee-4977-a4e0-77edbca1e7ca))
-  (model "HCF4094YM013TR.stp"
+  (model "../NiksKiCadLibrary.3dshapes/HCF4094YM013TR.stp"
     (offset (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

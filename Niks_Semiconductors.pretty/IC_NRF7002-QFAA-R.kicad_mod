@@ -752,7 +752,7 @@
 		(uuid "5d2a2ed6-d2cd-4b07-ba44-1711ca1ac56c")
 	)
 	(embedded_fonts no)
-	(model "QFN48_6X6_NOR.step"
+	(model "../NiksKiCadLibrary.3dshapes/QFN48_6X6_NOR.step"
 		(offset
 			(xyz 0 0 0)
 		)

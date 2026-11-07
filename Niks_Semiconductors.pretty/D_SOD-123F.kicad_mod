@@ -261,7 +261,7 @@
 		(uuid "3d7b18f4-e84b-4f48-af68-926cbd54d118")
 	)
 	(embedded_fonts no)
-	(model "D_SOD-123F.step"
+	(model "../NiksKiCadLibrary.3dshapes/D_SOD-123F.step"
 		(offset
 			(xyz 0 0 0)
 		)

@@ -251,7 +251,7 @@
 		(uuid "7c00314a-7875-4f2e-ac99-32554d25fcd6")
 	)
 	(embedded_fonts no)
-	(model "D_SMA.step"
+	(model "../NiksKiCadLibrary.3dshapes/D_SMA.step"
 		(offset
 			(xyz 0 0 0)
 		)

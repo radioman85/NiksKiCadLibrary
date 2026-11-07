@@ -301,7 +301,7 @@
 		(roundrect_rratio 0.25)
 	)
 	(embedded_fonts no)
-	(model "SOT-23.step"
+	(model "../NiksKiCadLibrary.3dshapes/SOT-23.step"
 		(offset
 			(xyz 0 0 0)
 		)

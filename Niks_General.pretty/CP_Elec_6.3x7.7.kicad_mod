@@ -358,7 +358,7 @@
 		(roundrect_rratio 0.15625)
 	)
 	(embedded_fonts no)
-	(model "CP_Elec_6.3x7.7.step"
+	(model "../NiksKiCadLibrary.3dshapes/CP_Elec_6.3x7.7.step"
 		(offset
 			(xyz 0 0 0)
 		)

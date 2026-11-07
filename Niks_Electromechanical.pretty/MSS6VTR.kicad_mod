@@ -59,7 +59,7 @@
   (pad "MP2" smd rect (at 3.65 -1.8 90) (size 0.8 1) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp bbe0fdc5-0f7d-4e69-a513-f2fd2669e1d6))
   (pad "MP3" smd rect (at -3.65 1.8 90) (size 0.8 1) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 871a5478-c76e-4a21-9059-69f7a3d48bd2))
   (pad "MP4" smd rect (at 3.65 1.8 90) (size 0.8 1) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 7bdcbf8b-ca03-4c5b-ac0c-e0627b217c10))
-  (model "MSS6-V-T_R.stp"
+  (model "../NiksKiCadLibrary.3dshapes/MSS6-V-T_R.stp"
     (offset (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

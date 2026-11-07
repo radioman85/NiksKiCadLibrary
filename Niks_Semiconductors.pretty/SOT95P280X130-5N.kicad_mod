@@ -235,7 +235,7 @@
 		(uuid "793ca380-1176-48b1-a3bb-d002f084ac45")
 	)
 	(embedded_fonts no)
-	(model "XC9265A181MR-G.stp"
+	(model "../NiksKiCadLibrary.3dshapes/XC9265A181MR-G.stp"
 		(offset
 			(xyz 0 0 0)
 		)

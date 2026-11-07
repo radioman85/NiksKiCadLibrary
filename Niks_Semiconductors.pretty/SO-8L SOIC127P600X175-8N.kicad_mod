@@ -38,7 +38,7 @@
   (pad "6" smd rect (at 2.712 0.635 90) (size 0.7 1.525) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 783e650e-6385-440b-9e2e-fc6997132ff3))
   (pad "7" smd rect (at 2.712 -0.635 90) (size 0.7 1.525) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 89bea64d-2b2e-465a-a115-e2ccfe0de1e1))
   (pad "8" smd rect (at 2.712 -1.905 90) (size 0.7 1.525) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp ac92ba18-5bf3-429a-bb5c-f1db29990322))
-  (model "L6982CDR.stp"
+  (model "../NiksKiCadLibrary.3dshapes/L6982CDR.stp"
     (offset (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

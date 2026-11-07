@@ -597,7 +597,7 @@
 		)
 	)
 	(embedded_fonts no)
-	(model "Pi_Pico_2W_CAD_Reference.step"
+	(model "../NiksKiCadLibrary.3dshapes/Pi_Pico_2W_CAD_Reference.step"
 		(offset
 			(xyz 0 0 0)
 		)

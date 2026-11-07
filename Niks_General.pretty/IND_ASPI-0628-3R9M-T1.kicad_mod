@@ -22,7 +22,7 @@
 	(fp_line (start -0.83 -3.0) (end 0.83 -3.0) (layer F.SilkS) (width 0.127))
 	(fp_line (start -0.83 3.0) (end 0.83 3.0) (layer F.SilkS) (width 0.127))
 	(embedded_fonts no)
-	(model "ASPI-0628-3R9M-T1.step"
+	(model "../NiksKiCadLibrary.3dshapes/ASPI-0628-3R9M-T1.step"
 		(offset
 			(xyz 0 0 0)
 		)
