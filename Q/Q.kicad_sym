@@ -3628,7 +3628,7 @@
 				(justify left)
 			)
 		)
-		(property "Datasheet" "https://www.infineon.com/dgdl/irlml0060pbf.pdf"
+		(property "Datasheet" "https://www.mouser.com/datasheet/2/196/Infineon_IRLML0060_DS_v01_01_EN-3363443.pdf"
 			(at 5.08 -3.81 0)
 			(show_name no)
 			(do_not_autoplace no)
